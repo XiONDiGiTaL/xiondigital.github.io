@@ -2195,7 +2195,7 @@ input, select, textarea {
 
 .album-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   justify-items: center;
   align-items: center;
@@ -2249,6 +2249,7 @@ input, select, textarea {
 .contact-icon:hover {
   transform: scale(1.05);
 }
+
 
 
 
