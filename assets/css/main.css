@@ -2189,3 +2189,73 @@ input, select, textarea {
 			}
 
 		}
+
+
+/* ======= XiØN Custom Music Section Styles ======= */
+
+.album-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  text-align: center;
+}
+
+.album-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 180px;
+}
+
+.album-cover {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.album-cover:hover {
+  transform: scale(1.05);
+}
+
+.album-info {
+  margin-top: 8px;
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.album-info strong {
+  display: block;
+  font-weight: 700;
+}
+
+.album-year {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-top: 3px;
+}
+
+.follow-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.social-button img {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.4));
+  transition: transform 0.3s ease;
+}
+
+.social-button img:hover {
+  transform: scale(1.1);
+}
+
