@@ -2194,28 +2194,23 @@ input, select, textarea {
 /* ======= XiØN Custom Music Section Styles ======= */
 
 .album-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  justify-content: center;
-  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  margin-top: 1.5rem;
 }
 
 .album-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 180px;
+  text-align: center;
 }
 
 .album-cover {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
   transition: transform 0.3s ease;
-  cursor: pointer;
 }
 
 .album-cover:hover {
@@ -2223,39 +2218,14 @@ input, select, textarea {
 }
 
 .album-info {
-  margin-top: 8px;
-  font-family: 'Arial', sans-serif;
-  font-size: 1rem;
+  margin-top: 0.5em;
+  font-size: 1em;
   color: #fff;
 }
 
-.album-info strong {
-  display: block;
-  font-weight: 700;
-}
-
 .album-year {
-  font-weight: 400;
-  font-size: 0.9rem;
-  color: #aaa;
-  margin-top: 3px;
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.follow-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-
-.social-button img {
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.4));
-  transition: transform 0.3s ease;
-}
-
-.social-button img:hover {
-  transform: scale(1.1);
-}
 
