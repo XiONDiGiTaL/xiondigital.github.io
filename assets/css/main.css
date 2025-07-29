@@ -2263,16 +2263,15 @@ input, select, textarea {
 
 .photo-gallery {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
   gap: 1rem;
   justify-items: center;
-  align-items: center;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 .gallery-photo {
   width: 100%;
-  max-width: 200px;  /* Adjust this to control image size */
+  max-width: 200px;
   border-radius: 10px;
   object-fit: cover;
   transition: transform 0.3s ease;
@@ -2281,5 +2280,6 @@ input, select, textarea {
 .gallery-photo:hover {
   transform: scale(1.05);
 }
+
 
 
