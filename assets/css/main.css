@@ -2195,8 +2195,8 @@ input, select, textarea {
 
 .album-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
   justify-items: center;
   align-items: center;
   margin-top: 1.5rem;
@@ -2208,7 +2208,7 @@ input, select, textarea {
 
 .album-cover {
   width: 100%;
-  max-width: 300px;
+  max-width: 200px;
   border-radius: 10px;
   transition: transform 0.3s ease;
 }
@@ -2228,6 +2228,8 @@ input, select, textarea {
   color: rgba(255, 255, 255, 0.6);
 }
 
+/* ======= Contact Icons Styles ======= */
+
 .contact-grid {
   display: flex;
   flex-wrap: wrap;
@@ -2237,14 +2239,16 @@ input, select, textarea {
 }
 
 .contact-icon {
-  width: 150px;
-  height: 150px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
+  margin-bottom: 0.5em;
   transition: transform 0.3s ease;
 }
 
 .contact-icon:hover {
   transform: scale(1.05);
 }
+
 
 
