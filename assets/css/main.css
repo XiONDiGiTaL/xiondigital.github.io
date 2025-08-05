@@ -2282,16 +2282,18 @@ input, select, textarea {
 }
 
 /* ======= Listener Reactions Section ======= */
+
 #listener-reactions {
-  margin-top: 3rem;
+  margin-top: 4rem;
   padding-top: 2rem;
+  padding-bottom: 1rem;
   overflow: hidden;
-  height: 150px;
+  height: 160px;
   position: relative;
 }
 
 #listener-reactions h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   text-align: left;
   font-size: 1.75rem;
   font-weight: bold;
@@ -2301,9 +2303,9 @@ input, select, textarea {
 .scrolling-quotes {
   display: flex;
   flex-direction: column;
-  animation: scrollUp 12s linear infinite;
   gap: 1rem;
   padding-left: 1rem;
+  animation: scrollUp 10s linear infinite;
 }
 
 .scrolling-quotes blockquote {
@@ -2326,12 +2328,27 @@ input, select, textarea {
   color: #666;
 }
 
-/* Animation — scroll all content fully before looping */
 @keyframes scrollUp {
   0% {
     transform: translateY(0%);
   }
   100% {
-    transform: translateY(-50%);
+    transform: translateY(-60%);
+  }
+}
+
+/* ====== Mobile Optimization ====== */
+@media (max-width: 768px) {
+  #listener-reactions {
+    margin-top: 5rem;
+    height: 180px;
+  }
+
+  .scrolling-quotes {
+    animation: scrollUp 14s linear infinite;
+  }
+
+  .scrolling-quotes blockquote {
+    font-size: 0.9rem;
   }
 }
