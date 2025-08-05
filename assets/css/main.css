@@ -2286,50 +2286,45 @@ input, select, textarea {
 #listener-reactions {
   margin-top: 4rem;
   padding-top: 1rem;
-  overflow: hidden;
   position: relative;
-  height: 6rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 }
 
 #listener-reactions h3 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem; /* increased space between title and quotes */
   font-size: 1.6rem;
   font-weight: bold;
   color: #222;
 }
 
-/* Container for one visible quote at a time */
+/* Container showing only one quote at a time */
 .scrolling-quotes {
   position: relative;
-  width: 100%;
-  height: 3.5rem;
+  height: 4.5rem; /* enough room for float-up */
   overflow: hidden;
+  width: 100%;
 }
 
-/* Each quote styled like a floating bubble */
+/* Quote box styled like a small bubble */
 .scrolling-quotes blockquote {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 30px); /* starts lower to float up more */
+  opacity: 0;
   font-style: italic;
   padding: 0.5rem 1rem;
-  border-left: 4px solid #FFD700;
+  border-left: 4px solid #2D3033;
   background: #f8f8f8;
   border-radius: 6px;
   max-width: 90%;
   box-sizing: border-box;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: floatUp 24s linear infinite;
   font-size: 0.9rem;
   color: #333;
+  text-align: left;
+  animation: floatUp 24s linear infinite;
 }
 
+/* Attribution */
 .scrolling-quotes blockquote span {
   display: block;
   margin-top: 0.3rem;
@@ -2338,7 +2333,7 @@ input, select, textarea {
   color: #555;
 }
 
-/* Animate each quote with staggered delay */
+/* Delay each quote */
 .scrolling-quotes blockquote:nth-child(1) { animation-delay: 0s; }
 .scrolling-quotes blockquote:nth-child(2) { animation-delay: 4s; }
 .scrolling-quotes blockquote:nth-child(3) { animation-delay: 8s; }
@@ -2346,26 +2341,26 @@ input, select, textarea {
 .scrolling-quotes blockquote:nth-child(5) { animation-delay: 16s; }
 .scrolling-quotes blockquote:nth-child(6) { animation-delay: 20s; }
 
-/* One-by-one float up animation */
+/* Float up with more lift */
 @keyframes floatUp {
   0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translate(-50%, 30px);
   }
   10% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(-50%, 0);
   }
   25% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(-50%, 0);
   }
   35% {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translate(-50%, -30px);
   }
   100% {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translate(-50%, -30px);
   }
 }
