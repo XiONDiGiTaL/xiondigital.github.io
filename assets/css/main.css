@@ -2326,7 +2326,7 @@ input, select, textarea {
   line-height: 1.4; /* slightly increased line height */
   transform: translateX(-50%) translateY(80px); /* start further below */
   opacity: 0;
-  animation: floatUpFade 30s linear infinite;
+  animation: floatUpFade 36s linear infinite;
   text-align: left;
   word-wrap: break-word;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -2348,13 +2348,13 @@ input, select, textarea {
   text-overflow: ellipsis; /* add ellipsis for long names */
 }
 
-/* Animation delays for each bubble */
+/* Animation delays for each bubble - ensure no overlap */
 .scrolling-quotes blockquote:nth-child(1) { animation-delay: 0s; }
-.scrolling-quotes blockquote:nth-child(2) { animation-delay: 5s; }
-.scrolling-quotes blockquote:nth-child(3) { animation-delay: 10s; }
-.scrolling-quotes blockquote:nth-child(4) { animation-delay: 15s; }
-.scrolling-quotes blockquote:nth-child(5) { animation-delay: 20s; }
-.scrolling-quotes blockquote:nth-child(6) { animation-delay: 25s; }
+.scrolling-quotes blockquote:nth-child(2) { animation-delay: 6s; }
+.scrolling-quotes blockquote:nth-child(3) { animation-delay: 12s; }
+.scrolling-quotes blockquote:nth-child(4) { animation-delay: 18s; }
+.scrolling-quotes blockquote:nth-child(5) { animation-delay: 24s; }
+.scrolling-quotes blockquote:nth-child(6) { animation-delay: 30s; }
 
 /* Pause animation on hover */
 .scrolling-quotes:hover blockquote {
@@ -2366,21 +2366,21 @@ input, select, textarea {
     opacity: 0;
     transform: translateX(-50%) translateY(80px);
   }
-  12% {
+  8% {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
-  45% {
+  25% {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
-  55% {
-    opacity: 0.8;
-    transform: translateX(-50%) translateY(-40px); /* reduced upward movement */
+  35% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-30px);
   }
   100% {
     opacity: 0;
-    transform: translateX(-50%) translateY(-60px); /* less aggressive final position */
+    transform: translateX(-50%) translateY(-30px);
   }
 }
 
