@@ -2300,7 +2300,7 @@ input, select, textarea {
 .scrolling-quotes {
   position: relative;
   height: 5.5rem;
-  overflow: hidden;
+  overflow: visible; /* allow the bubble to move up beyond container */
   width: 100%;
 }
 
@@ -2308,8 +2308,9 @@ input, select, textarea {
 .scrolling-quotes blockquote {
   position: absolute;
   left: 50%;
-  width: 80%;
-  max-width: 480px;
+  width: 90%; /* almost full width */
+  max-width: none; /* no max width */
+  min-width: 300px; /* minimum horizontal size */
   padding: 0.5rem 1rem;
   border-left: 4px solid #2D3033;
   background: #f8f8f8;
@@ -2318,19 +2319,24 @@ input, select, textarea {
   font-style: italic;
   font-size: 0.9rem;
   color: #333;
+  white-space: normal; /* allow multiline text */
   transform: translateX(-50%) translateY(40px);
   opacity: 0;
   animation: floatUpFade 30s linear infinite;
   text-align: left;
-  transition: opacity 0.3s ease;
+  line-height: 1.3;
+  word-wrap: break-word;
 }
 
+/* Ensure attribution text never gets cut off */
 .scrolling-quotes blockquote span {
   display: block;
   margin-top: 0.3rem;
   font-weight: bold;
   font-size: 0.75rem;
   color: #555;
+  white-space: nowrap; /* keep name on one line */
+  overflow: visible;
 }
 
 .scrolling-quotes blockquote:nth-child(1) { animation-delay: 0s; }
