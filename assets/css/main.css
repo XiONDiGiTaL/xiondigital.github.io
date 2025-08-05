@@ -2299,15 +2299,16 @@ input, select, textarea {
   color: #222;
 }
 
-/* New marquee container */
+/* Marquee container */
 .scrolling-quotes {
   position: relative;
   height: 5.5rem;
   overflow: hidden;
   white-space: nowrap; /* prevent wrapping */
+  animation: marqueeScroll 30s linear infinite;
 }
 
-/* Style the individual quotes inline */
+/* Individual quotes inline */
 .scrolling-quotes blockquote {
   display: inline-block;
   vertical-align: middle;
@@ -2320,7 +2321,7 @@ input, select, textarea {
   min-height: 3.5em;
   color: #333;
   box-sizing: border-box;
-  white-space: normal; /* allow multiline inside quote */
+  white-space: normal; /* multiline allowed */
   max-width: 20rem;
 }
 
@@ -2333,7 +2334,7 @@ input, select, textarea {
   color: #555;
 }
 
-/* Animation: move the container from right to left */
+/* Animation keyframes */
 @keyframes marqueeScroll {
   0% {
     transform: translateX(100%);
@@ -2341,8 +2342,4 @@ input, select, textarea {
   100% {
     transform: translateX(-100%);
   }
-}
-
-.scrolling-quotes {
-  animation: marqueeScroll 30s linear infinite;
 }
