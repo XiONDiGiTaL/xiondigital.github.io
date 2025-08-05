@@ -2342,3 +2342,7 @@ input, select, textarea {
     transform: translateX(-50%);
   }
 }
+
+.scrolling-track:hover {
+  animation-play-state: paused;
+}
