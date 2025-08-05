@@ -2288,7 +2288,6 @@ input, select, textarea {
   padding-top: 1rem;
   overflow: hidden;
   position: relative;
-  height: 5.5rem;
 }
 
 #listener-reactions h3 {
@@ -2299,24 +2298,18 @@ input, select, textarea {
   color: #222;
 }
 
-/* Outer marquee container */
 .scrolling-quotes {
   overflow: hidden;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  height: 5.5rem;
   position: relative;
+  width: 100%;
 }
 
-/* Inner scrolling track (duplicated for seamless loop) */
 .scrolling-track {
   display: inline-flex;
-  animation: marqueeScroll 30s linear infinite;
+  animation: marqueeScroll 40s linear infinite;
 }
 
-/* Individual quotes */
-.scrolling-track blockquote {
+.scrolling-quotes blockquote {
   display: inline-block;
   vertical-align: middle;
   font-style: italic;
@@ -2324,16 +2317,16 @@ input, select, textarea {
   border-left: 4px solid #FFD700;
   background: #f8f8f8;
   border-radius: 6px;
-  margin: 0 1rem 0 0;
+  margin-right: 1.5rem;
   min-height: 3.5em;
   color: #333;
   box-sizing: border-box;
-  white-space: normal; /* allow line wrapping */
+  white-space: normal;
   max-width: 20rem;
+  flex-shrink: 0; /* prevents quotes from shrinking */
 }
 
-/* Attribution styling */
-.scrolling-track blockquote span {
+.scrolling-quotes blockquote span {
   display: block;
   margin-top: 0.5rem;
   font-weight: bold;
@@ -2341,17 +2334,11 @@ input, select, textarea {
   color: #555;
 }
 
-/* Marquee animation */
 @keyframes marqueeScroll {
   0% {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
   100% {
     transform: translateX(-50%);
   }
-}
-
-/* Optional: Pause marquee on hover */
-.scrolling-track:hover {
-  animation-play-state: paused;
 }
