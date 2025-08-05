@@ -2288,7 +2288,10 @@ input, select, textarea {
   padding-top: 1rem;
   overflow: hidden;
   position: relative;
-  height: 6rem; /* Controls visible height */
+  height: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 #listener-reactions h3 {
@@ -2298,45 +2301,71 @@ input, select, textarea {
   color: #222;
 }
 
-/* Outer container */
+/* Container for one visible quote at a time */
 .scrolling-quotes {
   position: relative;
-  height: 6rem;
+  width: 100%;
+  height: 3.5rem;
   overflow: hidden;
 }
 
-/* Inner animated wrapper */
-.scrolling-quotes .quote-list {
-  display: flex;
-  flex-direction: column;
-  animation: scrollUp 30s linear infinite;
-}
-
-/* Each quote block */
+/* Each quote styled like a floating bubble */
 .scrolling-quotes blockquote {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   font-style: italic;
   padding: 0.5rem 1rem;
   border-left: 4px solid #FFD700;
   background: #f8f8f8;
   border-radius: 6px;
-  margin-bottom: 1rem;
-  color: #333;
   max-width: 90%;
-  font-size: 0.95rem;
   box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: floatUp 24s linear infinite;
+  font-size: 0.9rem;
+  color: #333;
 }
 
-/* Attribution */
 .scrolling-quotes blockquote span {
   display: block;
-  margin-top: 0.25rem;
+  margin-top: 0.3rem;
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #555;
 }
 
-/* Animation keyframes for vertical scroll */
-@keyframes scrollUp {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-100%); }
+/* Animate each quote with staggered delay */
+.scrolling-quotes blockquote:nth-child(1) { animation-delay: 0s; }
+.scrolling-quotes blockquote:nth-child(2) { animation-delay: 4s; }
+.scrolling-quotes blockquote:nth-child(3) { animation-delay: 8s; }
+.scrolling-quotes blockquote:nth-child(4) { animation-delay: 12s; }
+.scrolling-quotes blockquote:nth-child(5) { animation-delay: 16s; }
+.scrolling-quotes blockquote:nth-child(6) { animation-delay: 20s; }
+
+/* One-by-one float up animation */
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  35% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
 }
