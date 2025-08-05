@@ -2290,30 +2290,28 @@ input, select, textarea {
 }
 
 #listener-reactions h3 {
-  margin-bottom: 1.75rem; /* increased space between title and quotes */
+  margin-bottom: 1.75rem; /* spacing from quotes */
   font-size: 1.6rem;
   font-weight: bold;
   color: #222;
 }
 
-/* Container showing only one quote at a time */
 .scrolling-quotes {
   position: relative;
-  height: 4.5rem; /* enough room for float-up */
+  height: 4.5rem; /* height for quote float */
   overflow: hidden;
   width: 100%;
 }
 
-/* Quote box styled like a small bubble */
 .scrolling-quotes blockquote {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 30px); /* starts lower to float up more */
+  transform: translate(-50%, 40px); /* start lower for higher float */
   opacity: 0;
   font-style: italic;
   padding: 0.5rem 1rem;
-  border-left: 4px solid #2D3033;
+  border-left: 4px solid #2D3033; /* updated color */
   background: #f8f8f8;
   border-radius: 6px;
   max-width: 90%;
@@ -2321,10 +2319,9 @@ input, select, textarea {
   font-size: 0.9rem;
   color: #333;
   text-align: left;
-  animation: floatUp 24s linear infinite;
+  animation: floatUp 30s linear infinite; /* slower animation */
 }
 
-/* Attribution */
 .scrolling-quotes blockquote span {
   display: block;
   margin-top: 0.3rem;
@@ -2333,34 +2330,32 @@ input, select, textarea {
   color: #555;
 }
 
-/* Delay each quote */
 .scrolling-quotes blockquote:nth-child(1) { animation-delay: 0s; }
-.scrolling-quotes blockquote:nth-child(2) { animation-delay: 4s; }
-.scrolling-quotes blockquote:nth-child(3) { animation-delay: 8s; }
-.scrolling-quotes blockquote:nth-child(4) { animation-delay: 12s; }
-.scrolling-quotes blockquote:nth-child(5) { animation-delay: 16s; }
-.scrolling-quotes blockquote:nth-child(6) { animation-delay: 20s; }
+.scrolling-quotes blockquote:nth-child(2) { animation-delay: 5s; }
+.scrolling-quotes blockquote:nth-child(3) { animation-delay: 10s; }
+.scrolling-quotes blockquote:nth-child(4) { animation-delay: 15s; }
+.scrolling-quotes blockquote:nth-child(5) { animation-delay: 20s; }
+.scrolling-quotes blockquote:nth-child(6) { animation-delay: 25s; }
 
-/* Float up with more lift */
 @keyframes floatUp {
   0% {
     opacity: 0;
-    transform: translate(-50%, 30px);
+    transform: translate(-50%, 40px);
   }
   10% {
     opacity: 1;
     transform: translate(-50%, 0);
   }
-  25% {
+  40% {
     opacity: 1;
     transform: translate(-50%, 0);
   }
-  35% {
+  50% {
     opacity: 0;
-    transform: translate(-50%, -30px);
+    transform: translate(-50%, -50px); /* float higher up */
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, -30px);
+    transform: translate(-50%, -50px);
   }
 }
