@@ -2303,30 +2303,31 @@ input, select, textarea {
 }
 
 .scrolling-quotes {
-  max-height: 100px;
+  max-height: 80px; /* tighter scroll area */
   overflow: hidden;
   display: flex;
   flex-direction: column;
   animation: scrollUp 20s linear infinite;
-  gap: 1rem;
-  padding-top: 0.5rem;
+  gap: 0.5rem; /* less vertical spacing */
+  padding-top: 0.25rem;
 }
 
 .scrolling-quotes blockquote {
   font-style: italic;
-  padding: 0.5rem 1rem;
-  border-left: 4px solid #FFD700;
+  font-size: 0.85rem;  /* smaller text */
+  padding: 0.3rem 0.6rem;  /* tighter padding */
+  border-left: 3px solid #FFD700;
   background: #f8f8f8;
-  border-radius: 6px;
+  border-radius: 4px;
   margin: 0;
   color: #333;
+  line-height: 1.3;
 }
 
 .scrolling-quotes blockquote span {
-  display: block;
-  margin-top: 0.5rem;
-  font-weight: bold;
-  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  font-weight: 600;
+  font-size: 0.75rem;
   color: #555;
 }
 
