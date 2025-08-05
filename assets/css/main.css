@@ -2287,10 +2287,11 @@ input, select, textarea {
   margin-top: 4rem;
   padding-top: 1rem;
   position: relative;
+  padding-bottom: 3rem;
 }
 
 #listener-reactions h3 {
-  margin-bottom: 1.75rem; /* spacing from quotes */
+  margin-bottom: 1.5rem;
   font-size: 1.6rem;
   font-weight: bold;
   color: #222;
@@ -2298,28 +2299,30 @@ input, select, textarea {
 
 .scrolling-quotes {
   position: relative;
-  height: 4.5rem; /* height for quote float */
+  height: 5.5rem;
   overflow: hidden;
   width: 100%;
 }
 
+/* Each quote absolutely positioned and centered horizontally */
 .scrolling-quotes blockquote {
   position: absolute;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, 40px); /* start lower for higher float */
-  opacity: 0;
-  font-style: italic;
+  width: 80%;
+  max-width: 480px;
   padding: 0.5rem 1rem;
-  border-left: 4px solid #2D3033; /* updated color */
+  border-left: 4px solid #2D3033;
   background: #f8f8f8;
   border-radius: 6px;
-  max-width: 90%;
   box-sizing: border-box;
+  font-style: italic;
   font-size: 0.9rem;
   color: #333;
+  transform: translateX(-50%) translateY(40px);
+  opacity: 0;
+  animation: floatUpFade 30s linear infinite;
   text-align: left;
-  animation: floatUp 30s linear infinite; /* slower animation */
+  transition: opacity 0.3s ease;
 }
 
 .scrolling-quotes blockquote span {
@@ -2337,25 +2340,30 @@ input, select, textarea {
 .scrolling-quotes blockquote:nth-child(5) { animation-delay: 20s; }
 .scrolling-quotes blockquote:nth-child(6) { animation-delay: 25s; }
 
-@keyframes floatUp {
+/* Pause animation on hover */
+.scrolling-quotes:hover blockquote {
+  animation-play-state: paused;
+}
+
+@keyframes floatUpFade {
   0% {
     opacity: 0;
-    transform: translate(-50%, 40px);
+    transform: translateX(-50%) translateY(40px);
   }
   10% {
     opacity: 1;
-    transform: translate(-50%, 0);
+    transform: translateX(-50%) translateY(0);
   }
   40% {
     opacity: 1;
-    transform: translate(-50%, 0);
+    transform: translateX(-50%) translateY(0);
   }
   50% {
     opacity: 0;
-    transform: translate(-50%, -50px); /* float higher up */
+    transform: translateX(-50%) translateY(-60px);
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, -50px);
+    transform: translateX(-50%) translateY(-60px);
   }
 }
