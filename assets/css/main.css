@@ -2285,37 +2285,33 @@ input, select, textarea {
 
 #listener-reactions {
   margin-top: 3rem;
+  padding-top: 1rem;
   overflow: hidden;
   position: relative;
-  padding: 0 1rem;
+  z-index: 1;
 }
 
 #listener-reactions h3 {
-  margin-bottom: 1rem;
-  padding-top: 0.5rem;
-  text-align: left;
-  font-weight: bold;
   font-size: 1.5rem;
-  color: #000;
-  z-index: 2;
-  position: relative;
-  background-color: #fff; /* helps if there's transparency in marquee */
+  margin-bottom: 1rem;
+  text-align: left; /* aligns with 'Bio' */
+  padding-left: 1rem;
 }
 
 .scrolling-quotes {
-  max-height: 80px; /* tighter scroll area */
+  max-height: 80px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   animation: scrollUp 20s linear infinite;
-  gap: 0.5rem; /* less vertical spacing */
-  padding-top: 0.25rem;
+  gap: 0.5rem;
+  padding: 0 1rem;
 }
 
 .scrolling-quotes blockquote {
   font-style: italic;
-  font-size: 0.85rem;  /* smaller text */
-  padding: 0.3rem 0.6rem;  /* tighter padding */
+  font-size: 0.85rem;
+  padding: 0.3rem 0.6rem;
   border-left: 3px solid #FFD700;
   background: #f8f8f8;
   border-radius: 4px;
@@ -2336,6 +2332,6 @@ input, select, textarea {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-60%);
+    transform: translateY(-50%);
   }
 }
