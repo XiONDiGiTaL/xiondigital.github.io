@@ -2299,31 +2299,32 @@ input, select, textarea {
   color: #222;
 }
 
+/* New marquee container */
 .scrolling-quotes {
   position: relative;
   height: 5.5rem;
   overflow: hidden;
+  white-space: nowrap; /* prevent wrapping */
 }
 
+/* Style the individual quotes inline */
 .scrolling-quotes blockquote {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
+  display: inline-block;
+  vertical-align: middle;
   font-style: italic;
   padding: 0.5rem 1rem;
   border-left: 4px solid #FFD700;
   background: #f8f8f8;
   border-radius: 6px;
-  margin: 0 auto;
-  width: 80%;
+  margin: 0 1rem 0 0;
   min-height: 3.5em;
-  animation: quoteFadeLoop 25s linear infinite;
   color: #333;
   box-sizing: border-box;
+  white-space: normal; /* allow multiline inside quote */
+  max-width: 20rem;
 }
 
+/* Attribution styling */
 .scrolling-quotes blockquote span {
   display: block;
   margin-top: 0.5rem;
@@ -2332,24 +2333,16 @@ input, select, textarea {
   color: #555;
 }
 
-/* Stagger animations for each quote */
-.scrolling-quotes blockquote:nth-child(1) { animation-delay: 0s; }
-.scrolling-quotes blockquote:nth-child(2) { animation-delay: 5s; }
-.scrolling-quotes blockquote:nth-child(3) { animation-delay: 10s; }
-.scrolling-quotes blockquote:nth-child(4) { animation-delay: 15s; }
-.scrolling-quotes blockquote:nth-child(5) { animation-delay: 20s; }
+/* Animation: move the container from right to left */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 
-@keyframes quoteFadeLoop {
-  0%, 10% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  15%, 35% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  40%, 100% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
+.scrolling-quotes {
+  animation: marqueeScroll 30s linear infinite;
 }
