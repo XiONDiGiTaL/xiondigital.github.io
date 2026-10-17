@@ -1,47 +1,45 @@
-# Income Lab: First-Revenue Sprint
+# Income Lab: Digital Product Sprint
 
-**Status:** Draft only. This folder is on the `income-lab-draft` branch and is not live on the website.
+**Status:** Draft only. No live site changes or public offer have been made.
+
+## Constraint
+The owner does not want to write lyrics or provide creative services to other artists. Do not recommend lyric polishing, ghostwriting, or client-service work.
 
 ## Strategy
+Build one small, reusable digital product that can be sold repeatedly. Initial candidate: a Godot 4.x tactical game starter kit or narrowly scoped tactical battle-system component pack.
 
-Prioritize the fastest realistic route to first revenue with $0 upfront spend and minimal ongoing workload.
+The owner has prior interest in tactical-game mechanics and Godot development. Validate a specific buyer problem before building a large framework.
 
-### Offer A: Lyric Polish
-- Test price: $35
-- Scope: one verse (up to 16 bars) OR one hook (up to 8 lines)
-- Deliverable: one polished draft plus concise notes on cadence, rhyme, phrasing, and clarity
-- Includes: one revision based on consolidated feedback
-- Target turnaround: 3 business days after receiving complete input
-- Excludes: full-song writing, beat production, recording, publishing administration, guaranteed commercial outcomes, and unlimited revisions
+## Candidate MVP
+A documented, reusable tactical combat prototype for Godot:
+- Grid-based map and movement
+- Selectable units and movement range
+- Turn flow for player-controlled armies
+- Attack range and damage resolution
+- Simple example map and sample units
+- Concise setup instructions and demo video/GIF if feasible
 
-### Why this offer
-It relies on existing songwriting skill, requires no software build, and can be validated before creating a larger product.
+Avoid multiplayer, complex AI, procedural campaigns, save systems, custom art packs, and broad engine architecture in v1 unless validation proves they are essential.
 
-### Validation target
-Within 7 days of publishing the offer:
-1. Contact 10-15 relevant, individually selected prospects or warm contacts, without spam.
-2. Seek 3 substantive replies or objections.
-3. Aim for 1 paid order.
-4. If there are no qualified replies, revise the audience and message before expanding the offer.
+## Validation before implementation
+1. Find existing tactical-game asset products and identify gaps.
+2. Ask a few Godot developers what they most struggle to implement.
+3. Publish a free preview/readme or short demo.
+4. Look for concrete purchase intent, not just likes.
+5. Build the smallest package that solves the repeated problem.
 
-These are operating targets, not predictions.
+## Price hypothesis
+Test a modest one-time price such as $10-$20 only after competitor research and an honest feature comparison. Not a market-rate claim.
 
-## Zero-budget tool plan
-- GitHub: keep source assets and version history in this draft branch.
-- Existing artist website: possible later promotion, only after explicit review.
-- Ko-fi: candidate for a free-to-list checkout; payment-account connection and setup still required.
-- Canva: optional for preview graphics if the current account supports it.
-- No new database, paid hosting, advertising, paid API, or subscription.
+## Zero-budget stack
+- GitHub for source and version control.
+- Existing free-tier hosting only if a landing page is useful.
+- Free-to-list marketplace/check-out platform only after checking current fees and payout eligibility.
+- No paid hosting, ads, new subscriptions, paid AI APIs, or new database.
+- No modification to the existing live site without explicit approval.
 
-## Launch gates
-- [ ] User approves final offer, public-facing copy, price, and use of artist brand.
-- [ ] Payment account is connected and payout eligibility confirmed.
-- [ ] Delivery email and revision policy tested.
-- [ ] User confirms applicable benefit/income reporting requirements before recurring sales.
-- [ ] Only then publish or promote.
-
-## Do not do
-- Do not merge this branch into `main` or change the live site without approval.
-- Do not promise passive income or guaranteed sales.
-- Do not use client work, copyrighted lyrics, samples, or third-party material in public examples without permission.
-- Do not use unsolicited bulk messages or misleading claims.
+## Guardrails
+- No client services or custom commissions.
+- No copyrighted third-party assets or code without compatible rights.
+- No claim of guaranteed sales or passive income.
+- Keep all work in this draft folder/branch until approved.
