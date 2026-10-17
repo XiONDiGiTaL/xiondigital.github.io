@@ -1,38 +1,34 @@
-# Lyric Polish: Offer Draft
+# Product Brief: Tactical Game Systems Kit
 
-## Headline
-**Make your verse hit cleaner without losing your voice.**
+**Status:** Concept only. Do not list for sale until the scope, compatibility, documentation, and license are tested.
 
-## Short description
-Send one verse or hook you have already written. I'll tighten the cadence, improve rhyme connections, clean up awkward phrasing, and flag lines that may be unclear while preserving the intent and personality of your draft.
+## Working concept
+A small Godot 4.x starter kit for turn-based tactical battles, aimed at developers who want to prototype army-scale grid combat without starting from an empty project.
 
-## Test package: $35
-Choose one:
-- One verse, up to 16 bars; or
-- One hook, up to 8 lines.
+## Possible first release
+- Grid coordinates and movement validation
+- Unit selection and reachable-tile highlighting
+- Turn manager for player army turns
+- Basic attack validation and damage resolution
+- A tiny demo map with two unit types
+- README, setup instructions, and a clear license
 
-Includes:
-- One edited draft
-- Brief notes explaining the main changes
-- One revision based on one consolidated feedback message
-- Delivery target: 3 business days after all required materials are received
+## Not in v1
+Multiplayer, campaign systems, advanced enemy AI, procedural maps, full art/audio packs, networking, save/load, or compatibility claims beyond versions actually tested.
 
-## What I need from you
-1. Your original lyrics in text form.
-2. The beat or reference track link, if cadence needs to fit a specific instrumental.
-3. A short note on what must stay unchanged (meaning, key phrases, rhyme scheme, tone).
-4. Any clean-language or explicit-language requirements.
+## Product requirements
+- Include only original code/assets or material with compatible licenses.
+- Document Godot version tested.
+- Include a clean demo project and exact setup steps.
+- Avoid copying code from other projects unless the license and attribution obligations are understood and met.
+- No support promise beyond clearly stated documentation.
 
-## Boundaries
-- This is lyric editing, not a promise of a hit record or commercial success.
-- No full-song writing or beat production in this package.
-- No unlimited revisions.
-- You must have the right to submit the material for editing.
-- Client material will not be used as a public sample without explicit permission.
-- Payment, turnaround, cancellation and refund terms must be finalized before taking orders.
+## Price hypothesis
+Potential one-time price: $10-$20 after competitor research and developer feedback. This is a test hypothesis, not a market average.
 
-## Call to action
-**Send a verse or hook for review.** Before work begins, I'll confirm that it fits the package scope and delivery window.
-
-## Launch note
-Draft only. Do not publish until the seller confirms the price, terms, payment method, and public contact method.
+## Before launch
+- Confirm a concrete buyer pain point.
+- Verify the starter project imports and runs from a fresh clone.
+- Ask at least three Godot developers to try it.
+- Publish a preview only after tests and documentation are complete.
+- Confirm checkout fees, payout eligibility, and terms.
