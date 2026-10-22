@@ -11,8 +11,7 @@
 // served by the game's own repo (now /kankakombat/). This page forwards to it and
 // keeps query strings (?room=ABCDE) and hashes intact so old invites still work.
 (function () {
-  var rest = location.pathname.replace(/^\/KankaKombat\/?/i, '');
-  location.replace('/kankakombat/' + rest + location.search + location.hash);
+  location.replace('/kankakombat/' + location.search + location.hash);
 })();
 </script>
 <style>
