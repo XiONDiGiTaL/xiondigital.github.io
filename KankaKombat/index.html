@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kanka Kombat — new address</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://xiondigital.net/kankakombat/">
+<script>
+// GitHub Pages paths are case-sensitive, so the old /KankaKombat/ URL cannot be
+// served by the game's own repo (now /kankakombat/). This page forwards to it and
+// keeps query strings (?room=ABCDE) and hashes intact so old invites still work.
+(function () {
+  var rest = location.pathname.replace(/^\/KankaKombat\/?/i, '');
+  location.replace('/kankakombat/' + rest + location.search + location.hash);
+})();
+</script>
+<style>
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: grid; place-content: center; gap: 14px; padding: 24px;
+    background: #14101c; color: #f4e9d8; text-align: center;
+    font: 16px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  h1 { margin: 0; font-size: 20px; letter-spacing: .12em; text-transform: uppercase; color: #ffd166; }
+  p { margin: 0; color: #b9ab9b; }
+  a { color: #ffd166; }
+</style>
+</head>
+<body>
+  <h1>Kanka Kombat</h1>
+  <p>Taking you to the new address…</p>
+  <p><a href="/kankakombat/">xiondigital.net/kankakombat/</a></p>
+</body>
+</html>
