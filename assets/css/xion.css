@@ -1216,7 +1216,7 @@ body.nav-open {
   letter-spacing: -0.04em;
 }
 
-.teaser__copy p {
+.teaser__copy > p:not(.eyebrow) {
   margin-top: 16px;
   max-width: 38ch;
   font-size: 0.92rem;
@@ -1341,14 +1341,21 @@ body.nav-open {
   margin-top: 1.15em;
 }
 
-.about__copy p:first-of-type::first-letter {
-  float: left;
-  padding: 0.08em 0.09em 0 0;
+/* Opening paragraph: a true two-line drop cap where the browser supports it.
+   The old floated ::first-letter was misaligned against Sora's metrics, so the
+   fallback is simply a coloured capital rather than a floating one. */
+.about__copy > p:first-of-type::first-letter {
+  margin-right: 0.05em;
   font-family: var(--font-display);
-  font-size: 3.5em;
   font-weight: 600;
-  line-height: 0.78;
   color: var(--blue-hi);
+}
+
+@supports (initial-letter: 2) {
+  .about__copy > p:first-of-type::first-letter {
+    -webkit-initial-letter: 2;
+    initial-letter: 2;
+  }
 }
 
 .about__copy h3 {
@@ -1786,6 +1793,9 @@ body.nav-open {
 }
 
 .footer__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
   font-size: 0.78rem;
   color: var(--muted);
   transition: color 0.2s var(--ease);
@@ -2022,6 +2032,8 @@ body.nav-open {
   display: inline-flex;
   align-items: center;
   gap: 5px;
+  min-height: 28px;
+  padding-block: 4px;
   margin-top: 4px;
   font-size: 0.72rem;
   font-weight: 500;
@@ -2323,6 +2335,13 @@ body.nav-open {
 
   .scrolling-quotes blockquote {
     font-size: 0.88rem;
+  }
+
+  .scrolling-quotes blockquote span {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    letter-spacing: 0.08em;
   }
 
   .band__quote p {
