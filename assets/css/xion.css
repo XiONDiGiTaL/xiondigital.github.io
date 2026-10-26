@@ -1359,21 +1359,14 @@ body.nav-open {
   margin-top: 1.15em;
 }
 
-/* Opening paragraph: a true two-line drop cap where the browser supports it.
-   The old floated ::first-letter was misaligned against Sora's metrics, so the
-   fallback is simply a coloured capital rather than a floating one. */
-.about__copy > p:first-of-type::first-letter {
-  margin-right: 0.05em;
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: var(--blue-hi);
-}
-
-@supports (initial-letter: 2) {
-  .about__copy > p:first-of-type::first-letter {
-    -webkit-initial-letter: 2;
-    initial-letter: 2;
-  }
+/* The opening paragraph carries the section as a lede. Deliberately no drop
+   cap: both the floated and the initial-letter versions sat off the first
+   baseline against Sora's metrics, and grew into the second line at narrow
+   widths. The type does the work instead. */
+.about__copy > p:first-of-type {
+  font-size: 1.09em;
+  line-height: 1.72;
+  color: var(--ink);
 }
 
 .about__copy h3 {
@@ -2307,10 +2300,6 @@ body.nav-open {
 
   .about__copy {
     font-size: 0.98rem;
-  }
-
-  .about__copy p:first-of-type::first-letter {
-    font-size: 3.1em;
   }
 
   /* On narrow screens the section is much taller than it is wide, so the
