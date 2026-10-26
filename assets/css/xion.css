@@ -1359,14 +1359,22 @@ body.nav-open {
   margin-top: 1.15em;
 }
 
-/* The opening paragraph carries the section as a lede. Deliberately no drop
-   cap: both the floated and the initial-letter versions sat off the first
-   baseline against Sora's metrics, and grew into the second line at narrow
-   widths. The type does the work instead. */
-.about__copy > p:first-of-type {
-  font-size: 1.09em;
-  line-height: 1.72;
+/* The opening sentence is set apart as a display lede so the section opens on
+   a beat instead of a wall of copy. Deliberately no drop cap: both the floated
+   and the initial-letter versions sat off Sora's metrics, and grew into the
+   second line at narrow widths. */
+.about__lede {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.7vw, 1.48rem);
+  font-weight: 500;
+  line-height: 1.46;
+  letter-spacing: -0.022em;
   color: var(--ink);
+  text-wrap: balance;
+}
+
+.about__lede + p {
+  margin-top: 1.45em;
 }
 
 .about__copy h3 {
