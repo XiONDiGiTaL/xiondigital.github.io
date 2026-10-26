@@ -1366,7 +1366,7 @@ body.nav-open {
 .about__lede {
   font-family: var(--font-display);
   font-size: clamp(1.2rem, 1.7vw, 1.48rem);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.46;
   letter-spacing: -0.022em;
   color: var(--ink);
