@@ -1,6 +1,6 @@
 # xiondigital.net: redesign audit & handoff
 
-Prepared on the `redesign` branch. `main` still holds the original site, untouched.
+Built on the `redesign` branch, then published to `main`, which GitHub Pages serves at https://xiondigital.net.
 
 ---
 
@@ -162,7 +162,9 @@ they are kept so nothing breaks if you roll back, and can be deleted once you ar
 
 ## 6. Not verified / left to you
 
-- **Nothing was pushed or deployed.** The work sits on the local `redesign` branch.
+- **Deployed.** The redesign is live on `main` and the Pages build for that commit reported
+  `built`. It landed as new commits on top of the existing `main` history, with no force push, so
+  every earlier commit is still there to roll back to.
 - **Beacons** (`beacons.ai/xiondigital`) answered HTTP 403 to a server-side request, most likely
   bot protection. It is included, but it was not confirmed in a browser.
 - **Safari, Firefox and iOS** were not available here; Chromium was the only engine tested.
