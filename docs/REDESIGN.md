@@ -101,6 +101,10 @@ nothing in the site states that, so they were **not** added as releases.
   anchor with a descriptive `aria-label`.
 - `tools/sync-visuals.mjs`: optional, dependency-free playlist refresh.
 - `visuals.html` added to `sitemap.xml`.
+- The XiØN X mark as a faint blue watermark behind the contact section (`images/x-mark.png`,
+  tinted `#3f80ff`, 12 percent opacity, radial fade, clipped to the section). Decorative only:
+  `aria-hidden`, `pointer-events: none`, hidden in print, and repositioned under 720px so it
+  passes behind the link list rather than the newsletter card.
 
 ---
 
@@ -138,6 +142,7 @@ state cannot out-rank the hover and focus lift on the cards.
 | `assets/js/site.js` | Nav, scrollspy, spotlights, parallax, reveal, marquee pause, video player |
 | `images/opt/*` | Optimised derivatives (jpg + webp at several widths) |
 | `images/visuals/*` | Self-hosted thumbnails for the six videos (jpg + webp, 1280 and 640) |
+| `images/x-mark.png` | XiØN X mark, tinted blue with transparency, used as the contact watermark |
 | `tools/sync-visuals.mjs` | Optional playlist refresh tool (Node 18+, no dependencies) |
 | `sitemap.xml` | Extended with `visuals.html` |
 | `docs/REDESIGN.md` | This document |

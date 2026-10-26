@@ -1558,6 +1558,41 @@ body.nav-open {
    Contact
    ------------------------------------------------------------------------- */
 
+/* The XiØN X mark, heavily obscured behind the contact block. Purely
+   decorative: it clips to the section, never takes pointer events and is
+   hidden from assistive tech by aria-hidden on the element itself. */
+#contact {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.contact__mark {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.contact__mark::before {
+  content: "";
+  position: absolute;
+  top: -9rem;
+  right: -9rem;
+  height: 135%;
+  aspect-ratio: 734 / 862;
+  background: url("../../images/x-mark.png") center / contain no-repeat;
+  opacity: 0.12;
+  transform: rotate(-8deg);
+  -webkit-mask-image: radial-gradient(
+    closest-side,
+    #000 34%,
+    rgba(0, 0, 0, 0.5) 70%,
+    transparent 94%
+  );
+  mask-image: radial-gradient(closest-side, #000 34%, rgba(0, 0, 0, 0.5) 70%, transparent 94%);
+}
+
 .contact {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
@@ -2276,6 +2311,18 @@ body.nav-open {
     font-size: 3.1em;
   }
 
+  /* On narrow screens the section is much taller than it is wide, so the
+     mark is scaled down and led by its own placement instead of the desktop
+     crop over the newsletter block. */
+  .contact__mark::before {
+    top: 20%;
+    bottom: auto;
+    right: -4rem;
+    height: 46%;
+    opacity: 0.11;
+    transform: rotate(-10deg);
+  }
+
   .video-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -2430,7 +2477,8 @@ body.nav-open {
   .site-header,
   .mobile-nav,
   .reactions__toggle,
-  .video__play {
+  .video__play,
+  .contact__mark {
     display: none !important;
   }
 
