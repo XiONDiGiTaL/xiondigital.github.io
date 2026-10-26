@@ -1,5 +1,5 @@
 /* =========================================================================
-   XiØN — xiondigital.net
+   XiØN | xiondigital.net
    Interaction layer. No dependencies.
    Everything here is progressive enhancement: with JS disabled the site
    still navigates, plays video on YouTube and reads the full marquee.
@@ -194,7 +194,7 @@
   }
 
   /* ---------------------------------------------------------------------
-     Reveal on scroll — class is added here so no-JS visitors see everything
+     Reveal on scroll. The class is added here so no-JS visitors see everything
      --------------------------------------------------------------------- */
 
   var revealTargets = document.querySelectorAll(

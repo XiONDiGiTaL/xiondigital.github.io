@@ -1,5 +1,5 @@
 /* =========================================================================
-   XiØN — xiondigital.net
+   XiØN | xiondigital.net
    Design system: dark editorial artist site.
    Palette foundation borrowed from xiondigital.net/arcade (blue, not violet).
    ========================================================================= */
@@ -232,6 +232,15 @@ ol {
   height: 1px;
   flex: none;
   background: linear-gradient(to right, transparent, var(--blue));
+}
+
+/* The hero kicker is a quoted line, so it keeps its own sentence case. */
+.eyebrow--quote {
+  font-size: 0.74rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: #d5dae1;
 }
 
 .section__head {
@@ -766,7 +775,7 @@ body.nav-open {
 }
 
 /* -------------------------------------------------------------------------
-   Listener reactions — the original fan-comment marquee.
+   Listener reactions: the original fan-comment marquee.
    Comments, float-up animation, 36s cycle, 6s stagger and hover-pause are
    carried over from the live site. Colours adapted to the dark palette.
    ------------------------------------------------------------------------- */

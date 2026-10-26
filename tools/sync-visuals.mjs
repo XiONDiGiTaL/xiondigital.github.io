@@ -175,7 +175,7 @@ async function main() {
   for (const entry of entries) {
     const meta = await verify(entry.id);
     if (!meta) {
-      console.warn(`  skipped ${entry.id} — not embeddable or unavailable`);
+      console.warn(`  skipped ${entry.id}: not embeddable or unavailable`);
       continue;
     }
     verified.push({
@@ -183,7 +183,7 @@ async function main() {
       title: meta.title || entry.title,
       author: entry.author || meta.author_name || "XiØN",
     });
-    console.log(`  ok ${entry.id} — ${meta.title || entry.title}`);
+    console.log(`  ok ${entry.id}: ${meta.title || entry.title}`);
   }
 
   if (!verified.length) throw new Error("No embeddable videos found; nothing changed.");
@@ -221,7 +221,7 @@ async function main() {
 
   await writeFile(PAGE, updated);
   console.log(`\nUpdated ${verified.length} cards in visuals.html.`);
-  console.log("Tip: the home page teaser shows three fixed thumbnails and a “06 videos” count — update those by hand if the playlist length changes.");
+  console.log("Tip: the home page teaser shows three fixed thumbnails and a “06 videos” count; update those by hand if the playlist length changes.");
 }
 
 main().catch((error) => {
