@@ -394,6 +394,11 @@ ol {
   color: var(--ink);
 }
 
+.brand__word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .brand__o {
   color: var(--blue-hi);
   text-shadow: 0 0 22px rgba(63, 128, 255, 0.45);
