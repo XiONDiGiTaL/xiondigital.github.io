@@ -1124,6 +1124,15 @@ body.nav-open {
   transform: scale(1.02);
 }
 
+/* The card is a link now: keep its own rounding on focus instead of the
+   global 6px focus radius, and mirror the hover lift. */
+.disc-card:focus-visible {
+  border-radius: 16px;
+  border-color: rgba(63, 128, 255, 0.45);
+  background: var(--panel-hi);
+  transform: translateY(-4px);
+}
+
 .disc-card__body {
   display: flex;
   align-items: baseline;
@@ -2114,15 +2123,17 @@ body.nav-open {
    Reveal on scroll (added by JS, so no-JS users always see content)
    ------------------------------------------------------------------------- */
 
+/* Entrance animation uses `translate`, not `transform`, so it cannot
+   out-rank the hover/focus lift that cards set with transform. */
 .reveal {
   opacity: 0;
-  transform: translateY(16px);
+  translate: 0 16px;
 }
 
 .reveal.is-in {
   opacity: 1;
-  transform: none;
-  transition: opacity 0.6s var(--ease) var(--d, 0s), transform 0.6s var(--ease) var(--d, 0s);
+  translate: none;
+  transition: opacity 0.6s var(--ease) var(--d, 0s), translate 0.6s var(--ease) var(--d, 0s);
 }
 
 /* -------------------------------------------------------------------------
@@ -2383,7 +2394,7 @@ body.nav-open {
 
   .reveal {
     opacity: 1;
-    transform: none;
+    translate: none;
   }
 
   .portrait__frame img {
@@ -2430,6 +2441,6 @@ body.nav-open {
 
   .reveal {
     opacity: 1;
-    transform: none;
+    translate: none;
   }
 }

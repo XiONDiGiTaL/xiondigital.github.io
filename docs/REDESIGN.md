@@ -96,6 +96,9 @@ nothing in the site states that, so they were **not** added as releases.
 - Pointer spotlights, scroll reveal, scrollspy, restrained hero parallax, mobile menu with focus
   handling and Escape-to-close.
 - Responsive image derivatives (`webp` + `jpg` at several widths) and self-hosted video thumbnails.
+- Each *Loose Thoughts* cover is now a link to its own YouTube playlist, verified through oEmbed:
+  Vol. 3 → `Real Love`, Vol. 2 → `Beautiful Lies`, Vol. 1 → `N.O.U. Gmix`. Whole card is one
+  anchor with a descriptive `aria-label`.
 - `tools/sync-visuals.mjs`: optional, dependency-free playlist refresh.
 - `visuals.html` added to `sitemap.xml`.
 
@@ -119,6 +122,9 @@ contact and newsletter.
 **Effects**: pointer-following blue spotlight on cards and the hero frame, borders that
 illuminate on hover, restrained lift and image scale, two slow ambient glows, a masked grid at
 the top of the page. No particles, no intro screen, no audio.
+
+The scroll reveal animates the `translate` property rather than `transform`, so the `.is-in`
+state cannot out-rank the hover and focus lift on the cards.
 
 ---
 
