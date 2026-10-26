@@ -49,7 +49,9 @@ nothing in the site states that, so they were **not** added as releases.
 - **Listener Reactions marquee**: the same six comments, character for character, still inline
   HTML in the page; same `floatUpFade` keyframes, same 36s cycle, same 6s stagger across the six
   bubbles, same hover-to-pause, same responsive widths/heights. A scripted comparison of the
-  blockquote text against `main` returned 6/6 exact matches.
+  blockquote text against `main` returned 6/6 exact matches. The only later edit is punctuation:
+  the leading dash character was dropped from each of the six attributions on request, so they now
+  open directly with the handle. Comments and handles are untouched.
 - **Biography**: all four sections kept word for word, only split into headings and paragraphs.
   A scripted comparison confirmed every original paragraph appears verbatim.
 - **Links** (unchanged destinations): Spotify artist `4YkGZAtMD5tFAq859q7Bit`, the three Spotify
