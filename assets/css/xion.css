@@ -1577,9 +1577,11 @@ body.nav-open {
 .contact__mark::before {
   content: "";
   position: absolute;
-  top: -9rem;
-  right: -9rem;
-  height: 135%;
+  /* Sized from the viewport width so the glyph keeps the same visual weight
+     on a laptop and on a tablet, where the section grows much taller. */
+  top: -10vw;
+  right: -10vw;
+  width: 65vw;
   aspect-ratio: 734 / 862;
   background: url("../../images/x-mark.png") center / contain no-repeat;
   opacity: 0.12;
@@ -2318,6 +2320,7 @@ body.nav-open {
     top: 20%;
     bottom: auto;
     right: -4rem;
+    width: auto;
     height: 46%;
     opacity: 0.11;
     transform: rotate(-10deg);
