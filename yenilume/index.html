@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en" data-theme="lavender" data-mode="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Yenilume — a little window into creative possibilities</title>
+    <meta
+      name="description"
+      content="Yenilume is a calm, local-first creative companion for musicians, writers, designers and makers. Find the mood, the palette and a gentle plan — on Windows, Android and iOS."
+    />
+    <meta name="theme-color" content="#FFF9F2" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="brand/favicon.png" sizes="any" />
+    <link rel="apple-touch-icon" href="brand/apple-touch-icon.png" />
+    <link rel="preload" href="assets/fonts/baloo-700.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/nunito.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="assets/site.css" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Yenilume — a little window into creative possibilities" />
+    <meta
+      property="og:description"
+      content="A calm, local-first creative companion. Mood, palette, captions and a gentle sharing plan — designed for Windows, Android and iOS."
+    />
+    <meta property="og:image" content="https://xiondigital.net/yenilume/screenshots/welcome.png" />
+    <meta property="og:url" content="https://xiondigital.net/yenilume/" />
+    <link rel="canonical" href="https://xiondigital.net/yenilume/" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a class="brand" href="./" aria-label="Yenilume">
+          <img class="brand__mark" src="brand/icon-192.png" alt="" width="36" height="36" />
+          <span class="brand__word">Yenilume</span>
+        </a>
+
+        <nav class="nav__links" id="navLinks" aria-label="Primary">
+          <a href="#features" data-i18n="nav.features">Features</a>
+          <a href="#tour" data-i18n="nav.tour">Tour</a>
+          <a href="#design" data-i18n="nav.design">Design</a>
+          <a href="#platforms" data-i18n="nav.platforms">Platforms</a>
+          <a href="https://github.com/smnrbck/creative-ai-assistant#readme" target="_blank" rel="noreferrer" data-i18n="nav.docs">Docs</a>
+        </nav>
+
+        <div class="nav__actions">
+          <button class="chip-btn" id="langToggle" type="button" aria-label="Switch language to Turkish">TR</button>
+          <button class="round-btn" id="modeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+            <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun" /></svg>
+            <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon" /></svg>
+          </button>
+          <a
+            class="round-btn round-btn--ghost"
+            href="https://github.com/smnrbck/creative-ai-assistant"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="View source on GitHub"
+          >
+            <svg class="icon" aria-hidden="true"><use href="#i-github" /></svg>
+          </a>
+          <a class="btn btn--primary btn--sm nav__cta" href="app/">
+            <svg class="icon" aria-hidden="true"><use href="#i-sparkle" /></svg>
+            <span data-i18n="nav.demo">Try in browser</span>
+          </a>
+          <button class="round-btn nav__burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+            <svg class="icon" aria-hidden="true"><use href="#i-menu" /></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="shell hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#i-sparkle" /></svg><span data-i18n="hero.eyebrow">A creative companion</span></p>
+            <h1 class="hero__title" data-i18n="hero.title">Give your ideas a little more <span class="grad">light</span>.</h1>
+            <p class="hero__lead" data-i18n="hero.lead">
+              Yenilume reads what you're making — a lyric, a paragraph, a photo — and answers with a mood, a palette, a caption and a
+              gentle plan for sharing it. All on your own device.
+            </p>
+            <div class="hero__cta">
+              <a class="btn btn--primary btn--lg" href="app/">
+                <svg class="icon" aria-hidden="true"><use href="#i-sparkle" /></svg>
+                <span data-i18n="hero.primary">Open the web app</span>
+              </a>
+              <a class="btn btn--ghost btn--lg" href="#tour">
+                <span data-i18n="hero.secondary">Take the tour</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
+              </a>
+            </div>
+            <ul class="hero__meta">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="hero.meta1">Windows · Android · iOS</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-lock" /></svg><span data-i18n="hero.meta2">Local-first &amp; account-free</span></li>
+            </ul>
+          </div>
+
+          <div class="stage" aria-hidden="false">
+            <div class="stage__wash"></div>
+            <figure class="stage__shot">
+              <img
+                src="screenshots/sharing-plan.png"
+                alt="Yenilume's sharing plan screen with pastel platform cards and a suggested schedule"
+                width="1440"
+                height="1010"
+                data-shot="sharing-plan"
+                data-i18n-alt="alt.hero"
+              />
+            </figure>
+            <img class="stage__mascot" src="brand/mascot.png" alt="" width="104" height="104" />
+            <div class="stage__bubble stage__bubble--mood">
+              <span class="dot dot--lav"></span>
+              <div>
+                <strong data-i18n="hero.bubbleMood">Dreamy · hopeful</strong>
+                <span data-i18n="hero.bubbleMoodSub">mood read from your words</span>
+              </div>
+            </div>
+            <div class="stage__bubble stage__bubble--palette">
+              <div class="swatches" aria-hidden="true">
+                <i style="--c: #a78bfa"></i><i style="--c: #f6c8de"></i><i style="--c: #ffd76a"></i><i style="--c: #bfe8d2"></i>
+              </div>
+              <span data-i18n="hero.bubblePalette">palette from your image</span>
+            </div>
+            <span class="spark spark--a">✦</span>
+            <span class="spark spark--b">✧</span>
+            <span class="spark spark--c">✦</span>
+          </div>
+        </div>
+
+        <div class="shell">
+          <dl class="stats">
+            <div><dt>100%</dt><dd data-i18n="stats.1">on-device analysis</dd></div>
+            <div><dt>0</dt><dd data-i18n="stats.2">accounts needed</dd></div>
+            <div><dt>3</dt><dd data-i18n="stats.3">platforms, one design</dd></div>
+            <div><dt>2</dt><dd data-i18n="stats.4">languages, EN &amp; TR</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section class="section" id="features">
+        <div class="shell">
+          <header class="section__head reveal">
+            <p class="eyebrow eyebrow--plain" data-i18n="features.eyebrow">Small studio, big imagination</p>
+            <h2 data-i18n="features.title">Everything you need to get from <em>hmm</em> to <em>done</em>.</h2>
+            <p class="section__lead" data-i18n="features.lead">
+              No dashboards to configure, no prompt engineering. Just a warm place to put an idea and a few thoughtful tools around it.
+            </p>
+          </header>
+
+          <div class="cards">
+            <article class="card reveal">
+              <span class="card__icon card__icon--lav"><svg class="icon" aria-hidden="true"><use href="#i-wand" /></svg></span>
+              <span class="tag" data-i18n="f1.tag">Studio</span>
+              <h3 data-i18n="f1.title">One calm canvas for any idea</h3>
+              <p data-i18n="f1.body">
+                Type, paste or drop an image. Yenilume estimates the mood, pulls a palette from your picture, suggests directions — and
+                explains why, in plain language.
+              </p>
+            </article>
+
+            <article class="card reveal">
+              <span class="card__icon card__icon--mint"><svg class="icon" aria-hidden="true"><use href="#i-calendar" /></svg></span>
+              <span class="tag" data-i18n="f2.tag">Sharing plan</span>
+              <h3 data-i18n="f2.title">A plan that fits the work</h3>
+              <p data-i18n="f2.body">
+                Pick TikTok, Instagram, YouTube, Pinterest, X or LinkedIn and the days you have. Get time-aware slots with a short reason
+                for each, then tick them off as you go.
+              </p>
+            </article>
+
+            <article class="card reveal">
+              <span class="card__icon card__icon--blush"><svg class="icon" aria-hidden="true"><use href="#i-chat" /></svg></span>
+              <span class="tag" data-i18n="f3.tag">Creative support</span>
+              <h3 data-i18n="f3.title">Company for the 3am ideas</h3>
+              <p data-i18n="f3.body">
+                Ask the assistant for a nudge, shuffle a spark from the idea deck, or get a pocket pep talk. It works with the network
+                switched off.
+              </p>
+            </article>
+
+            <article class="card reveal">
+              <span class="card__icon card__icon--cloud"><svg class="icon" aria-hidden="true"><use href="#i-library" /></svg></span>
+              <span class="tag" data-i18n="f4.tag">Library</span>
+              <h3 data-i18n="f4.title">Everything you make, kept</h3>
+              <p data-i18n="f4.body">
+                Search, filter drafts against planned pieces, reopen any work in one tap, and export a single JSON file when you want a
+                backup.
+              </p>
+            </article>
+
+            <article class="card reveal">
+              <span class="card__icon card__icon--banana"><svg class="icon" aria-hidden="true"><use href="#i-palette" /></svg></span>
+              <span class="tag" data-i18n="f5.tag">Themes</span>
+              <h3 data-i18n="f5.title">Six pastel moods, light and dark</h3>
+              <p data-i18n="f5.body">
+                Lavender, Cloud, Mint, Banana, Baklava and Blush — each with a carefully built dark variant, generous contrast and
+                reduced-motion support.
+              </p>
+            </article>
+
+            <article class="card reveal">
+              <span class="card__icon card__icon--baklava"><svg class="icon" aria-hidden="true"><use href="#i-globe" /></svg></span>
+              <span class="tag" data-i18n="f6.tag">Bilingual</span>
+              <h3 data-i18n="f6.title">English &amp; Türkçe, on your device</h3>
+              <p data-i18n="f6.body">
+                Every label, tip, reason and caption is translated. Nothing leaves the machine, and optional external models are off by
+                default and documented.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tour -->
+      <section class="section section--tour" id="tour">
+        <div class="shell">
+          <header class="section__head section__head--center reveal">
+            <p class="eyebrow eyebrow--plain" data-i18n="tour.eyebrow">A little tour</p>
+            <h2 data-i18n="tour.title">Three steps, no blank pages.</h2>
+          </header>
+
+          <div class="tour">
+            <article class="tour__row reveal">
+              <div class="tour__copy">
+                <span class="tour__num" data-i18n="tour1.tag">01 · Drop it in</span>
+                <h3 data-i18n="tour1.title">One canvas for every kind of idea.</h3>
+                <p data-i18n="tour1.body">
+                  Paste lyrics, a paragraph, or drop a photo of a sketch. Yenilume reads it locally, finds the feeling, and offers
+                  directions you can actually use — with the reasoning shown, not hidden.
+                </p>
+                <ul class="ticks">
+                  <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="tour1.t1">Mood &amp; theme detection</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="tour1.t2">Palette pulled from your image</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="tour1.t3">Captions, tags and posting windows</span></li>
+                </ul>
+              </div>
+              <figure class="tour__frame">
+                <img src="screenshots/studio.png" alt="The Yenilume studio with a text idea, detected mood and generated analysis" width="1440" height="1010" loading="lazy" data-shot="studio" data-i18n-alt="alt.studio" />
+              </figure>
+            </article>
+
+            <article class="tour__row tour__row--flip reveal">
+              <div class="tour__copy">
+                <span class="tour__num" data-i18n="tour2.tag">02 · Shape it</span>
+                <h3 data-i18n="tour2.title">A plan that respects your energy.</h3>
+                <p data-i18n="tour2.body">
+                  Choose where you want to share and how many days to spread it across. The plan lands in a soft calendar with a reason
+                  for every slot, so nothing feels arbitrary.
+                </p>
+                <ul class="ticks">
+                  <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="tour2.t1">Platform-aware suggestions</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="tour2.t2">Gentle reminders, no streak guilt</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="tour2.t3">Share straight from the app</span></li>
+                </ul>
+              </div>
+              <figure class="tour__frame">
+                <img src="screenshots/plan.png" alt="The sharing plan calendar with pastel platform cards and scheduled ideas" width="1440" height="1010" loading="lazy" data-shot="plan" data-i18n-alt="alt.plan" />
+              </figure>
+            </article>
+
+            <article class="tour__row reveal">
+              <div class="tour__copy">
+                <span class="tour__num" data-i18n="tour3.tag">03 · Keep going</span>
+                <h3 data-i18n="tour3.title">A companion that never runs out of prompts.</h3>
+                <p data-i18n="tour3.body">
+                  Ask for a first line, a title, a colour story or a reason to keep going. The assistant, the idea deck and your library
+                  all live in the same quiet place.
+                </p>
+                <ul class="ticks">
+                  <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="tour3.t1">Guided creative exercises</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="tour3.t2">Idea sparks when you're stuck</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="tour3.t3">Search and revisit past work</span></li>
+                </ul>
+              </div>
+              <figure class="tour__frame">
+                <img src="screenshots/assistant.png" alt="The Yenilume assistant with a friendly mascot, prompt suggestions and a reply" width="1440" height="1010" loading="lazy" data-shot="assistant" data-i18n-alt="alt.assistant" />
+              </figure>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Design system -->
+      <section class="section section--design" id="design">
+        <div class="shell">
+          <header class="section__head reveal">
+            <p class="eyebrow eyebrow--plain" data-i18n="design.eyebrow">The design system</p>
+            <h2 data-i18n="design.title">Dreamy on the surface. Practical underneath.</h2>
+            <p class="section__lead" data-i18n="design.lead">
+              Colours, radii and type come from the same tokens the apps use, so this page, the Windows app and the mobile apps feel like
+              one little world.
+            </p>
+          </header>
+
+          <div class="design__grid">
+            <article class="panel panel--palette reveal">
+              <div class="panel__head">
+                <h3 data-i18n="design.paletteTitle">Six pastel moods</h3>
+                <p data-i18n="design.paletteNote">Tap a mood — the whole page warms up to it.</p>
+              </div>
+              <div class="swatch-row" role="group" aria-label="Accent theme">
+                <button class="swatch" type="button" data-accent="lavender" style="--c: #8061d9" aria-pressed="true"><span data-i18n="c.lavender">Lavender</span></button>
+                <button class="swatch" type="button" data-accent="cloud" style="--c: #3d8fc9" aria-pressed="false"><span data-i18n="c.cloud">Cloud</span></button>
+                <button class="swatch" type="button" data-accent="mint" style="--c: #2e9c74" aria-pressed="false"><span data-i18n="c.mint">Mint</span></button>
+                <button class="swatch" type="button" data-accent="banana" style="--c: #c08a00" aria-pressed="false"><span data-i18n="c.banana">Banana</span></button>
+                <button class="swatch" type="button" data-accent="baklava" style="--c: #a87552" aria-pressed="false"><span data-i18n="c.baklava">Baklava</span></button>
+                <button class="swatch" type="button" data-accent="blush" style="--c: #c25c8b" aria-pressed="false"><span data-i18n="c.blush">Blush</span></button>
+              </div>
+              <div class="chips" aria-hidden="true">
+                <span class="pill" style="--c: #a78bfa">#A78BFA</span>
+                <span class="pill" style="--c: #b9ddf8">#B9DDF8</span>
+                <span class="pill" style="--c: #bfe8d2">#BFE8D2</span>
+                <span class="pill" style="--c: #ffd76a">#FFD76A</span>
+                <span class="pill" style="--c: #f6c8de">#F6C8DE</span>
+                <span class="pill" style="--c: #a87552">#A87552</span>
+                <span class="pill" style="--c: #342747">#342747</span>
+                <span class="pill" style="--c: #fff9f2">#FFF9F2</span>
+              </div>
+            </article>
+
+            <article class="panel panel--type reveal">
+              <div class="panel__head">
+                <h3 data-i18n="design.typeTitle">Rounded headings, friendly body</h3>
+                <p data-i18n="design.typeNote">Baloo 2 for the hand-made moments, Nunito for the long reads. Both are bundled.</p>
+              </div>
+              <p class="specimen">Yenilume</p>
+              <p class="specimen specimen--body">
+                The quick brown fox brings a little light to the page — and keeps every label readable at 14px.
+              </p>
+              <div class="type-meta">
+                <span>Baloo 2 · 600 / 700</span>
+                <span>Nunito · variable</span>
+              </div>
+            </article>
+
+            <article class="panel panel--tokens reveal">
+              <div class="panel__head">
+                <h3 data-i18n="design.tokensTitle">Made of soft edges</h3>
+              </div>
+              <div class="token-demo">
+                <div class="token-demo__sample">
+                  <span class="token-demo__card"></span>
+                  <span class="token-demo__btn"></span>
+                  <span class="token-demo__chip"></span>
+                </div>
+                <ul class="token-list">
+                  <li><span data-i18n="design.token1">card radius</span><code>28px</code></li>
+                  <li><span data-i18n="design.token2">soft shadow</span><code>0 18px 40px</code></li>
+                  <li><span data-i18n="design.token3">hairline border</span><code>1px</code></li>
+                  <li><span data-i18n="design.token4">pill buttons</span><code>999px</code></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="panel panel--dark reveal">
+              <div class="panel__head">
+                <h3 data-i18n="design.darkTitle">A dark mode with its own light</h3>
+                <p data-i18n="design.darkNote">
+                  Not an inversion: plum surfaces, lavender accents and contrast that stays readable — for the late, quiet hours.
+                </p>
+              </div>
+              <figure class="dark-frame">
+                <img src="screenshots/studio-dark.png" alt="The Yenilume studio in dark mode with a plum background and lavender accents" width="1440" height="1010" loading="lazy" data-shot="studio-dark" data-i18n-alt="alt.dark" />
+              </figure>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Platforms -->
+      <section class="section" id="platforms">
+        <div class="shell">
+          <header class="section__head section__head--center reveal">
+            <p class="eyebrow eyebrow--plain" data-i18n="platforms.eyebrow">One ecosystem</p>
+            <h2 data-i18n="platforms.title">Windows, Android and iOS. Same little world.</h2>
+            <p class="section__lead" data-i18n="platforms.lead">
+              One React + TypeScript codebase, wrapped in Electron for Windows and Capacitor for mobile. Lumen Core — the analysis engine —
+              is plain TypeScript, so it runs everywhere, offline.
+            </p>
+          </header>
+
+          <div class="platforms">
+            <article class="platform reveal">
+              <div class="platform__top">
+                <span class="platform__icon"><svg class="icon" aria-hidden="true"><use href="#i-windows" /></svg></span>
+                <span class="tag" data-i18n="p.win.tag">Desktop</span>
+              </div>
+              <h3 data-i18n="p.win.title">Yenilume for Windows</h3>
+              <p data-i18n="p.win.body">
+                A frameless, rounded window with native menus and a secure app protocol. Installer and portable build included.
+              </p>
+              <a class="platform__download" href="https://github.com/smnrbck/creative-ai-assistant/releases/latest" target="_blank" rel="noreferrer">
+                <span data-i18n="p.win.download">Download the Windows installer</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
+              </a>
+              <div class="cmd"><code>npm run desktop:build</code></div>
+            </article>
+
+            <article class="platform reveal">
+              <div class="platform__top">
+                <span class="platform__icon"><svg class="icon" aria-hidden="true"><use href="#i-android" /></svg></span>
+                <span class="tag" data-i18n="p.android.tag">Android</span>
+              </div>
+              <h3 data-i18n="p.android.title">Yenilume on Android</h3>
+              <p data-i18n="p.android.body">
+                A Capacitor shell with bottom navigation, native sharing and gentle haptics, tuned for one-handed use.
+              </p>
+              <div class="cmd"><code>npm run mobile:android</code></div>
+            </article>
+
+            <article class="platform reveal">
+              <div class="platform__top">
+                <span class="platform__icon"><svg class="icon" aria-hidden="true"><use href="#i-apple" /></svg></span>
+                <span class="tag" data-i18n="p.ios.tag">iOS</span>
+              </div>
+              <h3 data-i18n="p.ios.title">Yenilume on iPhone &amp; iPad</h3>
+              <p data-i18n="p.ios.body">
+                The same shell for iOS, with safe-area aware layout and reachable controls. Open it in Xcode on macOS to sign and run.
+              </p>
+              <div class="cmd"><code>npm run mobile:ios</code></div>
+            </article>
+          </div>
+
+          <div class="mobile-showcase reveal">
+            <figure class="phone">
+              <img src="screenshots/mobile-plan.png" alt="Yenilume on a phone: bottom navigation and a compact calendar" width="420" height="860" loading="lazy" data-shot="mobile-plan" data-i18n-alt="alt.phone" />
+            </figure>
+            <div class="mobile-showcase__copy">
+              <h3 data-i18n="platforms.mobileTitle">Small screens get their own layout — not a squeeze.</h3>
+              <p data-i18n="platforms.mobileBody">
+                The same components rearrange into a thumb-friendly shell: a bottom dock, larger tap targets, and a calendar that folds
+                into a tidy list. One design system, three native-feeling homes.
+              </p>
+              <p class="note" data-i18n="platforms.note">
+                The browser preview is the same UI. Builds are produced locally for now — no store listings yet.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Privacy -->
+      <section class="section section--privacy">
+        <div class="shell">
+          <div class="privacy reveal">
+            <div class="privacy__copy">
+              <p class="eyebrow eyebrow--onDark"><svg class="icon" aria-hidden="true"><use href="#i-lock" /></svg><span data-i18n="privacy.eyebrow">Local by design</span></p>
+              <h2 data-i18n="privacy.title">Your ideas stay yours.</h2>
+              <p data-i18n="privacy.body">
+                Words and pictures are analysed inside the app by Lumen Core — small, deterministic and explainable. No account, no
+                uploads, no analytics. Optional external models can be connected in Settings, off by default.
+              </p>
+            </div>
+            <ul class="privacy__points">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="privacy.p1">Nothing leaves the device by default</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="privacy.p2">One JSON file exports everything</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="privacy.p3">Works with airplane mode on</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Docs / CTA -->
+      <section class="section" id="docs">
+        <div class="shell">
+          <div class="cta reveal">
+            <div class="cta__sparks" aria-hidden="true"><span>✦</span><span>✧</span><span>✦</span></div>
+            <div class="cta__copy">
+              <p class="eyebrow eyebrow--plain" data-i18n="cta.eyebrow">Ready when you are</p>
+              <h2 data-i18n="cta.title">Ready to make something?</h2>
+              <p data-i18n="cta.body">
+                Start in the browser, or build the desktop and mobile apps from source. Your first idea is already waiting.
+              </p>
+              <div class="cta__actions">
+                <a class="btn btn--primary btn--lg" href="app/">
+                  <svg class="icon" aria-hidden="true"><use href="#i-sparkle" /></svg>
+                  <span data-i18n="cta.primary">Open the web app</span>
+                </a>
+                <a class="btn btn--paper btn--lg" href="https://github.com/smnrbck/creative-ai-assistant#readme" target="_blank" rel="noreferrer" data-i18n="cta.secondary">Read the README</a>
+              </div>
+              <div class="cta__links">
+                <a href="https://github.com/smnrbck/creative-ai-assistant/blob/main/README.tr.md" target="_blank" rel="noreferrer">
+                  <svg class="icon" aria-hidden="true"><use href="#i-book" /></svg><span>Türkçe README</span>
+                </a>
+                <a href="https://github.com/smnrbck/creative-ai-assistant" target="_blank" rel="noreferrer">
+                  <svg class="icon" aria-hidden="true"><use href="#i-github" /></svg><span data-i18n="cta.source">Source code</span>
+                </a>
+                <a href="https://github.com/smnrbck/creative-ai-assistant/releases/latest" target="_blank" rel="noreferrer">
+                  <svg class="icon" aria-hidden="true"><use href="#i-windows" /></svg><span data-i18n="cta.download">Windows installer</span>
+                </a>
+                <a href="https://github.com/smnrbck/creative-ai-assistant/blob/main/LICENSE" target="_blank" rel="noreferrer">
+                  <svg class="icon" aria-hidden="true"><use href="#i-book" /></svg><span data-i18n="cta.license">License</span>
+                </a>
+              </div>
+            </div>
+            <img class="cta__mascot" src="brand/mascot.png" alt="" width="190" height="190" loading="lazy" />
+          </div>
+
+          <p class="credits" data-i18n="credits">
+            Concept &amp; creative direction by <strong>Sema Nur Biçki</strong> (smnrbck) · Creative assistance by
+            <a href="https://xiondigital.net" target="_blank" rel="noreferrer">xiondigital</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer__inner">
+        <div class="footer__brand">
+          <a class="brand" href="./" aria-label="Yenilume">
+            <img class="brand__mark" src="brand/icon-192.png" alt="" width="34" height="34" />
+            <span class="brand__word">Yenilume</span>
+          </a>
+          <p data-i18n="footer.tag">A little window into creative possibilities.</p>
+        </div>
+        <div class="footer__cols">
+          <div>
+            <h4 data-i18n="footer.product">Product</h4>
+            <a href="app/" data-i18n="footer.web">Web app</a>
+            <a href="#platforms" data-i18n="footer.windows">Windows</a>
+            <a href="#platforms" data-i18n="footer.android">Android</a>
+            <a href="#platforms" data-i18n="footer.ios">iOS</a>
+          </div>
+          <div>
+            <h4 data-i18n="footer.project">Project</h4>
+            <a href="https://github.com/smnrbck/creative-ai-assistant#readme" target="_blank" rel="noreferrer">README</a>
+            <a href="https://github.com/smnrbck/creative-ai-assistant/blob/main/README.tr.md" target="_blank" rel="noreferrer">README · Türkçe</a>
+            <a href="https://github.com/smnrbck/creative-ai-assistant/blob/main/LICENSE" target="_blank" rel="noreferrer" data-i18n="footer.license">License</a>
+            <a href="https://github.com/smnrbck/creative-ai-assistant" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+          <div>
+            <h4 data-i18n="footer.elsewhere">Elsewhere</h4>
+            <a href="https://xiondigital.net" target="_blank" rel="noreferrer">xiondigital.net</a>
+            <a href="https://github.com/XiONDiGiTaL" target="_blank" rel="noreferrer">XionDigital on GitHub</a>
+            <a href="https://github.com/smnrbck" target="_blank" rel="noreferrer">smnrbck on GitHub</a>
+          </div>
+        </div>
+      </div>
+      <div class="shell footer__base">
+        <span>© <span id="year">2026</span> Yenilume</span>
+        <span data-i18n="footer.build">Made with care, and a little sparkle.</span>
+      </div>
+    </footer>
+
+    <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+      <defs>
+        <symbol id="i-sparkle" viewBox="0 0 24 24">
+          <path d="M12 2.6l1.9 5.4a3 3 0 0 0 1.8 1.8L21 11.7l-5.3 1.9a3 3 0 0 0-1.8 1.8L12 20.7l-1.9-5.3a3 3 0 0 0-1.8-1.8L3 11.7l5.3-1.9a3 3 0 0 0 1.8-1.8Z" />
+          <path d="M18.6 3.1l.5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5Z" />
+        </symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15" /><path d="M13 6l6 6-6 6" /></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6.5 9.5 17 4 11.5" /></symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24">
+          <rect x="4" y="10" width="16" height="10.5" rx="3.2" />
+          <path d="M8 10V7.6a4 4 0 0 1 8 0V10" />
+          <path d="M12 14.5v2" />
+        </symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4" />
+        </symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.6 14.6A8.6 8.6 0 0 1 9.4 3.4a8.6 8.6 0 1 0 11.2 11.2Z" /></symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" /></symbol>
+        <symbol id="i-github" viewBox="0 0 24 24">
+          <path style="fill: currentColor; stroke: none" d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z" />
+        </symbol>
+        <symbol id="i-wand" viewBox="0 0 24 24">
+          <path d="M4.5 19.5 16 8" />
+          <path d="m13.6 5.6 3.4 3.4" />
+          <path d="M16 4.2 18.2 6.4 20.6 4 18.4 1.8Z" />
+          <path d="M6.4 4.2 7 5.9l1.7.6-1.7.6L6.4 9l-.6-1.9L4.1 6.5 5.8 6Z" />
+        </symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24">
+          <rect x="3.5" y="5" width="17" height="16" rx="4" />
+          <path d="M8 3v3.5M16 3v3.5M3.5 10.5h17" />
+          <circle cx="8.5" cy="14.5" r="1" style="fill: currentColor" />
+          <circle cx="12" cy="14.5" r="1" style="fill: currentColor" />
+          <circle cx="15.5" cy="14.5" r="1" style="fill: currentColor" />
+        </symbol>
+        <symbol id="i-chat" viewBox="0 0 24 24">
+          <path d="M20.5 12a8 8 0 0 1-11.7 7.1L4 20.5l1.4-4.4A8 8 0 1 1 20.5 12Z" />
+          <circle cx="9" cy="12" r="1.1" style="fill: currentColor" />
+          <circle cx="12.5" cy="12" r="1.1" style="fill: currentColor" />
+          <circle cx="16" cy="12" r="1.1" style="fill: currentColor" />
+        </symbol>
+        <symbol id="i-library" viewBox="0 0 24 24">
+          <path d="M4.5 6.5A2 2 0 0 1 6.5 4.5H19v15H6.5a2 2 0 0 1-2-2Z" />
+          <path d="M8.5 4.5v15M4.5 9h4M4.5 15h4" />
+        </symbol>
+        <symbol id="i-palette" viewBox="0 0 24 24">
+          <path d="M12 3a9 9 0 0 0 0 18c1.4 0 2.1-1 2.1-2s-.7-1.7-.7-2.5c0-1 .8-1.8 1.8-1.8h1.9a3.9 3.9 0 0 0 3.9-3.9C21 6.6 16.9 3 12 3Z" />
+          <circle cx="8" cy="9" r="1.2" style="fill: currentColor" />
+          <circle cx="12.5" cy="7" r="1.2" style="fill: currentColor" />
+          <circle cx="7.5" cy="14" r="1.2" style="fill: currentColor" />
+        </symbol>
+        <symbol id="i-globe" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3.2 12h17.6" />
+          <path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z" />
+        </symbol>
+        <symbol id="i-windows" viewBox="0 0 24 24">
+          <path style="fill: currentColor; stroke: none" d="M3 4.9 11 3.8v7.4H3Zm9-1.2 9-1.3v8.8h-9ZM3 12.6h8v7.5L3 19.1Zm9 0h9v8.7l-9-1.3Z" />
+        </symbol>
+        <symbol id="i-android" viewBox="0 0 24 24">
+          <path d="M5.2 10.2a6.8 6.8 0 0 1 13.6 0v6.3a2.3 2.3 0 0 1-2.3 2.3H7.5a2.3 2.3 0 0 1-2.3-2.3Z" />
+          <path d="m8 4.2-1.6-2M16 4.2l1.6-2" />
+          <circle cx="9.2" cy="10" r="1" style="fill: currentColor" />
+          <circle cx="14.8" cy="10" r="1" style="fill: currentColor" />
+        </symbol>
+        <symbol id="i-apple" viewBox="0 0 24 24">
+          <path style="fill: currentColor; stroke: none" d="M16.4 12.7c0-2 1.6-3 1.7-3.1-.9-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7s-1.6-.7-2.6-.7c-1.3 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 8 .7 1 1.5 2.1 2.6 2 1-.1 1.4-.7 2.7-.7s1.6.7 2.7.6c1.1 0 1.8-1 2.5-2 .8-1.1 1.1-2.2 1.1-2.3 0 0-2.1-.8-2.1-3.2ZM14.5 5.6c.6-.7 1-1.7.9-2.6-.9 0-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.5 1 .1 2-.5 2.5-1.2Z" />
+        </symbol>
+        <symbol id="i-book" viewBox="0 0 24 24">
+          <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5Z" />
+          <path d="M20 18v3H6.5A2.5 2.5 0 0 1 4 18.5" />
+          <path d="M8.5 7.5h7" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <script src="assets/site.js" defer></script>
+  </body>
+</html>
