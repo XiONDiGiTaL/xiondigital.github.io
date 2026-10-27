@@ -29,6 +29,10 @@
     "nav.docs": "Belgeler",
     "nav.demo": "Tarayıcıda dene",
 
+    "aria.primary": "Birincil gezinme",
+    "aria.source": "GitHub'da kaynağı görüntüle",
+    "aria.accent": "Vurgu teması",
+
     "hero.eyebrow": "Bir yaratıcı yol arkadaşı",
     "hero.title": 'Fikirlerine biraz daha <span class="grad">ışık</span> ver.',
     "hero.lead":
@@ -205,11 +209,46 @@
   const altNodes = [...document.querySelectorAll("[data-i18n-alt]")];
   const originalAlt = new Map(altNodes.map((node) => [node.dataset.i18nAlt, node.getAttribute("alt")]));
   const shotNodes = [...document.querySelectorAll("img[data-shot]")];
+  const ariaNodes = [...document.querySelectorAll("[data-i18n-aria]")];
+  const originalAria = new Map(
+    ariaNodes.map((node) => [node.dataset.i18nAria, node.getAttribute("aria-label")]),
+  );
+  const appLinks = [...document.querySelectorAll("[data-app-link]")];
   const desc = document.querySelector('meta[name="description"]');
   const langToggle = document.getElementById("langToggle");
+  const modeToggleEl = document.getElementById("modeToggle");
+  const burgerEl = document.getElementById("burger");
+  const navEl = document.getElementById("nav");
+
+  /* Labels that describe an action depend on the language the page is showing. */
+  const aria = {
+    langToTr: { en: "Switch language to Turkish", tr: "Dili Türkçeye çevir" },
+    langToEn: { en: "Switch language to English", tr: "Dili İngilizceye çevir" },
+    modeToDark: { en: "Switch to dark theme", tr: "Koyu temaya geç" },
+    modeToLight: { en: "Switch to light theme", tr: "Aydınlık temaya geç" },
+    menuOpen: { en: "Open menu", tr: "Menüyü aç" },
+    menuClose: { en: "Close menu", tr: "Menüyü kapat" },
+  };
+  let currentLang = "en";
+  const say = (pair) => pair[currentLang];
+
+  /** The mobile menu button is declared further down, so refresh it once it exists. */
+  let menuReady = false;
+  function refreshMenuLabel() {
+    if (!menuReady || !burgerEl) return;
+    const open = !!navEl?.classList.contains("is-open");
+    burgerEl.setAttribute("aria-label", say(open ? aria.menuClose : aria.menuOpen));
+  }
+
+  function refreshModeLabel() {
+    if (!modeToggleEl) return;
+    const dark = root.dataset.mode === "dark";
+    modeToggleEl.setAttribute("aria-label", say(dark ? aria.modeToLight : aria.modeToDark));
+  }
 
   function applyLanguage(lang) {
     const isTr = lang === "tr";
+    currentLang = isTr ? "tr" : "en";
     textNodes.forEach((node) => {
       const key = node.dataset.i18n;
       node.innerHTML = (isTr && tr[key]) || originalText.get(key) || "";
@@ -218,17 +257,27 @@
       const key = node.dataset.i18nAlt;
       node.setAttribute("alt", (isTr && tr[key]) || originalAlt.get(key) || "");
     });
+    ariaNodes.forEach((node) => {
+      const key = node.dataset.i18nAria;
+      node.setAttribute("aria-label", (isTr && tr[key]) || originalAria.get(key) || "");
+    });
     /* the Turkish tour shows the app itself running in Turkish */
     shotNodes.forEach((node) => {
       node.src = isTr ? `screenshots/tr/${node.dataset.shot}.png` : `screenshots/${node.dataset.shot}.png`;
+    });
+    /* carry the choice into the demo, which would otherwise open in English */
+    appLinks.forEach((link) => {
+      link.setAttribute("href", `app/?lang=${currentLang}`);
     });
     document.documentElement.lang = lang;
     document.title = copy[lang].title;
     if (desc) desc.setAttribute("content", copy[lang].description);
     if (langToggle) {
       langToggle.textContent = isTr ? "EN" : "TR";
-      langToggle.setAttribute("aria-label", isTr ? "Switch language to English" : "Switch language to Turkish");
+      langToggle.setAttribute("aria-label", say(isTr ? aria.langToEn : aria.langToTr));
     }
+    refreshModeLabel();
+    refreshMenuLabel();
     store.set("yenilume.site.lang", lang);
   }
 
@@ -268,7 +317,7 @@
     const dark = mode === "dark";
     root.dataset.mode = dark ? "dark" : "light";
     modeToggle?.setAttribute("aria-pressed", String(dark));
-    modeToggle?.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+    refreshModeLabel();
     if (themeMeta) themeMeta.setAttribute("content", dark ? "#171021" : "#FFF9F2");
     if (persist) store.set("yenilume.site.mode", dark ? "dark" : "light");
   }
@@ -287,17 +336,20 @@
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
+  menuReady = true;
+  refreshMenuLabel();
+
   function closeMenu() {
     nav?.classList.remove("is-open");
     burger?.setAttribute("aria-expanded", "false");
-    burger?.setAttribute("aria-label", "Open menu");
+    refreshMenuLabel();
   }
 
   burger?.addEventListener("click", () => {
     const open = !nav?.classList.contains("is-open");
     nav?.classList.toggle("is-open", open);
     burger.setAttribute("aria-expanded", String(open));
-    burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    refreshMenuLabel();
   });
 
   document.querySelectorAll("#navLinks a").forEach((link) => link.addEventListener("click", closeMenu));

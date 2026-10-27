@@ -37,7 +37,7 @@
           <span class="brand__word">Yenilume</span>
         </a>
 
-        <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <nav class="nav__links" id="navLinks" aria-label="Primary" data-i18n-aria="aria.primary">
           <a href="#features" data-i18n="nav.features">Features</a>
           <a href="#tour" data-i18n="nav.tour">Tour</a>
           <a href="#design" data-i18n="nav.design">Design</a>
@@ -57,10 +57,11 @@
             target="_blank"
             rel="noreferrer"
             aria-label="View source on GitHub"
+            data-i18n-aria="aria.source"
           >
             <svg class="icon" aria-hidden="true"><use href="#i-github" /></svg>
           </a>
-          <a class="btn btn--primary btn--sm nav__cta" href="app/">
+          <a class="btn btn--primary btn--sm nav__cta" href="app/" data-app-link>
             <svg class="icon" aria-hidden="true"><use href="#i-sparkle" /></svg>
             <span data-i18n="nav.demo">Try in browser</span>
           </a>
@@ -83,7 +84,7 @@
               gentle plan for sharing it. All on your own device.
             </p>
             <div class="hero__cta">
-              <a class="btn btn--primary btn--lg" href="app/">
+              <a class="btn btn--primary btn--lg" href="app/" data-app-link>
                 <svg class="icon" aria-hidden="true"><use href="#i-sparkle" /></svg>
                 <span data-i18n="hero.primary">Open the web app</span>
               </a>
@@ -302,7 +303,7 @@
                 <h3 data-i18n="design.paletteTitle">Six pastel moods</h3>
                 <p data-i18n="design.paletteNote">Tap a mood — the whole page warms up to it.</p>
               </div>
-              <div class="swatch-row" role="group" aria-label="Accent theme">
+              <div class="swatch-row" role="group" aria-label="Accent theme" data-i18n-aria="aria.accent">
                 <button class="swatch" type="button" data-accent="lavender" style="--c: #8061d9" aria-pressed="true"><span data-i18n="c.lavender">Lavender</span></button>
                 <button class="swatch" type="button" data-accent="cloud" style="--c: #3d8fc9" aria-pressed="false"><span data-i18n="c.cloud">Cloud</span></button>
                 <button class="swatch" type="button" data-accent="mint" style="--c: #2e9c74" aria-pressed="false"><span data-i18n="c.mint">Mint</span></button>
@@ -476,7 +477,7 @@
                 Start in the browser, or build the desktop and mobile apps from source. Your first idea is already waiting.
               </p>
               <div class="cta__actions">
-                <a class="btn btn--primary btn--lg" href="app/">
+                <a class="btn btn--primary btn--lg" href="app/" data-app-link>
                   <svg class="icon" aria-hidden="true"><use href="#i-sparkle" /></svg>
                   <span data-i18n="cta.primary">Open the web app</span>
                 </a>
@@ -520,7 +521,7 @@
         <div class="footer__cols">
           <div>
             <h4 data-i18n="footer.product">Product</h4>
-            <a href="app/" data-i18n="footer.web">Web app</a>
+            <a href="app/" data-app-link data-i18n="footer.web">Web app</a>
             <a href="#platforms" data-i18n="footer.windows">Windows</a>
             <a href="#platforms" data-i18n="footer.android">Android</a>
             <a href="#platforms" data-i18n="footer.ios">iOS</a>
