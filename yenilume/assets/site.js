@@ -29,6 +29,8 @@
     "nav.docs": "Belgeler",
     "nav.demo": "Tarayıcıda dene",
 
+    "design.specimen": "Pijamalı hasta yağız şoföre çabucak güvendi — ve 14px'te her etiket okunur kaldı.",
+
     "aria.primary": "Birincil gezinme",
     "aria.source": "GitHub'da kaynağı görüntüle",
     "aria.accent": "Vurgu teması",
