@@ -1,8 +1,11 @@
-# Publishes XiONDiGiTaL/visualvm to https://xiondigital.net/visualvm/
+# Publishes visualvm to https://xiondigital.net/visualvm/
 #
 # GitHub Pages serves this repo from main, so the app's build output is committed
 # into visualvm/ here - the same shape as /arcade/ and /meldra/ (plain committed
 # folders, no separate Pages project, no CNAME changes).
+#
+# Source of truth is XiONDiGiTaL/visualvm. Until that repo has a package.json the
+# job falls back to the bootstrap copy, and logs a warning so it is not silent.
 name: visualvm
 
 on:
@@ -22,89 +25,32 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # One-time: add the teaser card to the home page. Idempotent, so delete this
-  # job (and `needs: card` on publish) once the card is live.
-  card:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Insert the teaser if it is missing
-        run: |
-          python3 - <<'PY'
-          import pathlib
-          page = pathlib.Path("index.html")
-          src = page.read_text(encoding="utf-8")
-          if "visualvm-title" in src:
-              print("teaser already present, nothing to do")
-              raise SystemExit(0)
-          anchor = "\n        <!-- About -->\n"
-          if src.count(anchor) != 1:
-              raise SystemExit(f"anchor count {src.count(anchor)}, refusing to edit")
-          if src.count("<section") != src.count("</section>"):
-              raise SystemExit("unbalanced sections, refusing to edit")
-          BLOCK = '''
-                  <!-- App teaser: opens the standalone inbox -->
-                  <section class="section section--tight" aria-labelledby="visualvm-title">
-                    <div class="wrap teaser" style="grid-template-columns: minmax(0, 1fr)">
-                      <div class="teaser__copy">
-                        <p class="eyebrow">Apps / Android</p>
-                        <h2 id="visualvm-title">Your voicemail, <em>transcribed.</em></h2>
-                        <p>
-                          visualvm reads Google Voice notifications into one searchable inbox and
-                          transcribes each message on the device — audio never leaves the phone.
-                        </p>
-                        <a class="btn btn--ghost" href="visualvm/">
-                          Open visualvm
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round" />
-                          </svg>
-                        </a>
-                      </div>
-                    </div>
-                  </section>
-          '''
-          page.write_text(src.replace(anchor, BLOCK + anchor, 1), encoding="utf-8")
-          print("inserted teaser")
-          PY
-
-      - name: Commit the card
-        run: |
-          git config user.name "visualvm"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html
-          if git diff --cached --quiet; then
-            echo "no card change to commit"
-            exit 0
-          fi
-          git commit -m "feat(site): link visualvm from the home page"
-          git push
-
   publish:
-    needs: card
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check the app repo has source
+      - name: Fetch the app source
         id: src
         run: |
-          if git ls-remote --exit-code https://github.com/XiONDiGiTaL/visualvm.git HEAD > /dev/null 2>&1; then
-            echo "found=true" >> "$GITHUB_OUTPUT"
+          set -eu
+          fallback_branch="freebuff/e8e295a9a759a07a6f3114f5"
+          if curl -sfL https://raw.githubusercontent.com/XiONDiGiTaL/visualvm/main/package.json -o /dev/null; then
+            git clone --depth 1 https://github.com/XiONDiGiTaL/visualvm.git .app
+            echo "from=XiONDiGiTaL/visualvm@main" >> "$GITHUB_OUTPUT"
+          elif curl -sfL "https://raw.githubusercontent.com/XiONDiGiTaL/MorphePatches/$fallback_branch/visualvm/package.json" -o /dev/null; then
+            git clone --depth 1 -b "$fallback_branch" https://github.com/XiONDiGiTaL/MorphePatches.git .mono
+            mv .mono/visualvm .app
+            rm -rf .mono
+            echo "::warning::XiONDiGiTaL/visualvm has no app source yet, publishing the bootstrap copy from MorphePatches@$fallback_branch. Push the source to XiONDiGiTaL/visualvm to switch over."
+            echo "from=XiONDiGiTaL/MorphePatches@$fallback_branch/visualvm" >> "$GITHUB_OUTPUT"
           else
-            echo "found=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::XiONDiGiTaL/visualvm has no commits yet, nothing to publish."
+            echo "::error::No app source found in XiONDiGiTaL/visualvm or the bootstrap branch."
+            exit 1
           fi
-
-      - name: Check out the app
-        if: steps.src.outputs.found == 'true'
-        uses: actions/checkout@v4
-        with:
-          repository: XiONDiGiTaL/visualvm
-          path: .app
+          echo "Publishing from $(grep '^from=' "$GITHUB_OUTPUT" | tail -1)"
 
       - name: Set up Node
-        if: steps.src.outputs.found == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -112,7 +58,6 @@ jobs:
           cache-dependency-path: .app/package-lock.json
 
       - name: Build with the /visualvm/ base
-        if: steps.src.outputs.found == 'true'
         working-directory: .app
         env:
           VITE_BASE: /visualvm/
@@ -121,7 +66,6 @@ jobs:
           npm run build
 
       - name: Mirror the build into visualvm/
-        if: steps.src.outputs.found == 'true'
         run: |
           mkdir -p visualvm
           find visualvm -mindepth 1 -delete
@@ -129,7 +73,6 @@ jobs:
           rm -rf .app
 
       - name: Commit the build
-        if: steps.src.outputs.found == 'true'
         run: |
           git config user.name "visualvm"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
