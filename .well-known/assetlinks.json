@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "net.xiondigital.visualvm",
+      "sha256_cert_fingerprints": [
+        "20:F1:F7:BE:44:4D:A9:7F:A8:C8:E4:EE:27:F2:D3:F7:26:01:55:D2:5E:34:BE:7C:52:B7:66:56:A6:57:FE:00"
+      ]
+    }
+  }
+]
