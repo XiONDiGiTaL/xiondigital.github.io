@@ -35,6 +35,8 @@ jobs:
         with:
           ref: main
 
+      # TODO: once XiONDiGiTaL/visualvm holds the app source, delete the fallback
+      # branch below so the site can only ever publish from that repo.
       - name: Fetch the app source
         id: src
         run: |
