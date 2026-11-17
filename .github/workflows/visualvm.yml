@@ -25,68 +25,32 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  publish:
+  # One shot: the visualvm card wrapped its CTA in a <p class="featured__lede">
+  # only to borrow the paragraph margin. Move it into the site's action row.
+  # Delete this whole job (and the needs: below) once it has run.
+  card:
     runs-on: ubuntu-latest
     steps:
-      # ref: main, not the triggering commit, because another commit may land
-      # between the push and this job starting.
       - name: Check out this site
         uses: actions/checkout@v4
         with:
           ref: main
 
-      # TODO: once XiONDiGiTaL/visualvm holds the app source, delete the fallback
-      # branch below so the site can only ever publish from that repo.
-      - name: Fetch the app source
-        id: src
+      - name: Give the card CTA an action row
         run: |
           set -eu
-          fallback_branch="freebuff/e8e295a9a759a07a6f3114f5"
-          if curl -sfL https://raw.githubusercontent.com/XiONDiGiTaL/visualvm/main/package.json -o /dev/null; then
-            git clone --depth 1 https://github.com/XiONDiGiTaL/visualvm.git .app
-            echo "from=XiONDiGiTaL/visualvm@main" >> "$GITHUB_OUTPUT"
-          elif curl -sfL "https://raw.githubusercontent.com/XiONDiGiTaL/MorphePatches/$fallback_branch/visualvm/package.json" -o /dev/null; then
-            git clone --depth 1 -b "$fallback_branch" https://github.com/XiONDiGiTaL/MorphePatches.git .mono
-            mv .mono/visualvm .app
-            rm -rf .mono
-            echo "::warning::XiONDiGiTaL/visualvm has no app source yet, publishing the bootstrap copy from MorphePatches@$fallback_branch. Push the source to XiONDiGiTaL/visualvm to switch over."
-            echo "from=XiONDiGiTaL/MorphePatches@$fallback_branch/visualvm" >> "$GITHUB_OUTPUT"
-          else
-            echo "::error::No app source found in XiONDiGiTaL/visualvm or the bootstrap branch."
-            exit 1
-          fi
+          python3 - <<'PY'
+          import pathlib
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-          cache-dependency-path: .app/package-lock.json
+          page = pathlib.Path("index.html")
+          src = page.read_text(encoding="utf-8")
 
-      - name: Build with the /visualvm/ base
-        working-directory: .app
-        env:
-          VITE_BASE: /visualvm/
-        run: |
-          npm ci
-          npm run build
-
-      - name: Mirror the build into visualvm/
-        run: |
-          mkdir -p visualvm
-          find visualvm -mindepth 1 -delete
-          cp -R .app/dist/. visualvm/
-          rm -rf .app
-
-      - name: Commit the build
-        run: |
-          git config user.name "visualvm"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add visualvm
-          if git diff --cached --quiet; then
-            echo "visualvm/ already matches the source build"
-            exit 0
-          fi
-          git commit -m "chore(visualvm): publish build to /visualvm/"
-          git pull --rebase origin main
-          git push
+          old = '''                <p class="featured__lede">
+                            <a class="btn btn--ghost" href="visualvm/">
+                              Open visualvm
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round" />
+                              </svg>
+                            </a>
+                          </p>'''
+          PY
