@@ -25,64 +25,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # One shot: the visualvm card wrapped its CTA in a paragraph only to borrow the
-  # paragraph margin. Move the CTA into the site's action row instead.
-  # Delete this job, and the needs: below, once it has run.
-  card:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out this site
-        uses: actions/checkout@v4
-        with:
-          ref: main
-
-      - name: Give the card CTA an action row
-        run: |
-          set -eu
-          python3 - <<'PY'
-          import pathlib
-
-          page = pathlib.Path("index.html")
-          src = page.read_text(encoding="utf-8")
-          anchor = '<a class="btn btn--ghost" href="visualvm/">'
-          if src.count(anchor) != 1:
-              raise SystemExit("expected one card CTA, found %d" % src.count(anchor))
-
-          lines = src.splitlines()
-          start = next(i for i, line in enumerate(lines) if line.strip() == anchor)
-          wrapper = lines[start - 1].strip()
-          if "hero__actions" in wrapper:
-              print("card CTA already uses an action row")
-              raise SystemExit(0)
-          if wrapper != '<p class="featured__lede">':
-              raise SystemExit("unexpected wrapper above the CTA: %r" % wrapper)
-          end = next(i for i in range(start, start + 12) if lines[i].strip() == "</a>")
-          if lines[end + 1].strip() != "</p>":
-              raise SystemExit("unexpected close after the CTA: %r" % lines[end + 1])
-
-          lines[start - 1] = lines[start - 1].replace('<p class="featured__lede">', '<div class="hero__actions">')
-          lines[end + 1] = lines[end + 1].replace("</p>", "</div>")
-          out = "\n".join(lines) + ("\n" if src.endswith("\n") else "")
-          if out.count("hero__actions") != src.count("hero__actions") + 1:
-              raise SystemExit("action row count did not go up by one")
-          if out.count('<p class="featured__lede">') != src.count('<p class="featured__lede">') - 1:
-              raise SystemExit("lede paragraph count did not drop by one")
-          page.write_text(out, encoding="utf-8")
-          print("moved the card CTA into an action row")
-          PY
-          git config user.name "visualvm"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html
-          if git diff --cached --quiet; then
-            echo "index.html already carries the change"
-            exit 0
-          fi
-          git commit -m "fix(site): give the visualvm card CTA a real action row"
-          git pull --rebase origin main
-          git push
-
   publish:
-    needs: card
     runs-on: ubuntu-latest
     steps:
       # ref: main, not the triggering commit, because another commit may land
