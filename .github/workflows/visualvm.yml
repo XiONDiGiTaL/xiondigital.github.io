@@ -25,9 +25,9 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # One shot: the visualvm card wrapped its CTA in a <p class="featured__lede">
-  # only to borrow the paragraph margin. Move it into the site's action row.
-  # Delete this whole job (and the needs: below) once it has run.
+  # One shot: the visualvm card wrapped its CTA in a paragraph only to borrow the
+  # paragraph margin. Move the CTA into the site's action row instead.
+  # Delete this job, and the needs: below, once it has run.
   card:
     runs-on: ubuntu-latest
     steps:
@@ -44,13 +44,115 @@ jobs:
 
           page = pathlib.Path("index.html")
           src = page.read_text(encoding="utf-8")
+          anchor = '<a class="btn btn--ghost" href="visualvm/">'
+          if src.count(anchor) != 1:
+              raise SystemExit("expected one card CTA, found %d" % src.count(anchor))
 
-          old = '''                <p class="featured__lede">
-                            <a class="btn btn--ghost" href="visualvm/">
-                              Open visualvm
-                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round" />
-                              </svg>
-                            </a>
-                          </p>'''
+          lines = src.splitlines()
+          start = next(i for i, line in enumerate(lines) if line.strip() == anchor)
+          wrapper = lines[start - 1].strip()
+          if "hero__actions" in wrapper:
+              print("card CTA already uses an action row")
+              raise SystemExit(0)
+          if wrapper != '<p class="featured__lede">':
+              raise SystemExit("unexpected wrapper above the CTA: %r" % wrapper)
+          end = next(i for i in range(start, start + 12) if lines[i].strip() == "</a>")
+          if lines[end + 1].strip() != "</p>":
+              raise SystemExit("unexpected close after the CTA: %r" % lines[end + 1])
+
+          lines[start - 1] = lines[start - 1].replace('<p class="featured__lede">', '<div class="hero__actions">')
+          lines[end + 1] = lines[end + 1].replace("</p>", "</div>")
+          out = "\n".join(lines) + ("\n" if src.endswith("\n") else "")
+          if out.count("hero__actions") != src.count("hero__actions") + 1:
+              raise SystemExit("action row count did not go up by one")
+          if out.count('<p class="featured__lede">') != src.count('<p class="featured__lede">') - 1:
+              raise SystemExit("lede paragraph count did not drop by one")
+          page.write_text(out, encoding="utf-8")
+          print("moved the card CTA into an action row")
           PY
+          git config user.name "visualvm"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "index.html already carries the change"
+            exit 0
+          fi
+          git commit -m "fix(site): give the visualvm card CTA a real action row"
+          git pull --rebase origin main
+          git push
+
+  publish:
+    needs: card
+    runs-on: ubuntu-latest
+    steps:
+      # ref: main, not the triggering commit, because another commit may land
+      # between the push and this job starting.
+      - name: Check out this site
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      # TODO: once XiONDiGiTaL/visualvm holds the app source, delete the fallback
+      # branch below so the site can only ever publish from that repo.
+      - name: Fetch the app source
+        id: src
+        run: |
+          set -eu
+          fallback_branch="freebuff/e8e295a9a759a07a6f3114f5"
+          if curl -sfL https://raw.githubusercontent.com/XiONDiGiTaL/visualvm/main/package.json -o /dev/null; then
+            git clone --depth 1 https://github.com/XiONDiGiTaL/visualvm.git .app
+            echo "from=XiONDiGiTaL/visualvm@main" >> "$GITHUB_OUTPUT"
+          elif curl -sfL "https://raw.githubusercontent.com/XiONDiGiTaL/MorphePatches/$fallback_branch/visualvm/package.json" -o /dev/null; then
+            git clone --depth 1 -b "$fallback_branch" https://github.com/XiONDiGiTaL/MorphePatches.git .mono
+            mv .mono/visualvm .app
+            rm -rf .mono
+            echo "::warning::XiONDiGiTaL/visualvm has no app source yet, publishing the bootstrap copy from MorphePatches@$fallback_branch. Push the source to XiONDiGiTaL/visualvm to switch over."
+            echo "from=XiONDiGiTaL/MorphePatches@$fallback_branch/visualvm" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::No app source found in XiONDiGiTaL/visualvm or the bootstrap branch."
+            exit 1
+          fi
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: .app/package-lock.json
+
+      - name: Install dependencies
+        working-directory: .app
+        run: npm ci
+
+      # npm run typecheck is tsc --noEmit. It runs before the build so a type
+      # error stops the job here: nothing is built, nothing is committed, and the
+      # site keeps its last good build instead of taking a broken one.
+      - name: Typecheck
+        working-directory: .app
+        run: npm run typecheck
+
+      - name: Build with the /visualvm/ base
+        working-directory: .app
+        env:
+          VITE_BASE: /visualvm/
+        run: npm run build
+
+      - name: Mirror the build into visualvm/
+        run: |
+          mkdir -p visualvm
+          find visualvm -mindepth 1 -delete
+          cp -R .app/dist/. visualvm/
+          rm -rf .app
+
+      - name: Commit the build
+        run: |
+          git config user.name "visualvm"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add visualvm
+          if git diff --cached --quiet; then
+            echo "visualvm/ already matches the source build"
+            exit 0
+          fi
+          git commit -m "chore(visualvm): publish build to /visualvm/"
+          git pull --rebase origin main
+          git push
